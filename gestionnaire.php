@@ -26,9 +26,28 @@
                         <div class="row">
                             <div class="col border">
                                 <div class="xol-sm col-md col-xl">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores quia doloremque nihil repellat totam. Minus veniam, consectetur quod autem quaerat vitae quis illo voluptates odit necessitatibus! Exercitationem nobis iusto rerum?
-                                    Doloribus excepturi, quibusdam eum quisquam qui vitae minima praesentium, architecto sit incidunt quidem quos magni quo mollitia labore? Adipisci exercitationem quibusdam voluptates iste magnam, est rerum reprehenderit esse aut ab?
-                                    Aliquam alias cumque rem quibusdam voluptates harum consequuntur nisi? Consequuntur, ut repellat. Beatae debitis aliquid nam tempore, commodi qui exercitationem voluptas assumenda saepe deleniti itaque facilis, harum eaque illo fugiat?
+                                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" height="450px" src="assets/img/ton.jpg" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" height="450px" src="assets/img/caisse.jpg" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" height="450px" src="..." alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
                                 </div>
                             </div>
                         </div>
