@@ -1,3 +1,45 @@
+<?php 
+include 'dbconnect.php';
+
+session_start();
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  $username = mysqli_real_escape_string($conn, $_POST['username']);
+  $psd = mysqli_real_escape_string($conn, $_POST['psd']); 
+
+//   $conn = mysqli_connect('username','password','dbname');
+
+  $sql = "SELECT utilisateur.username FROM utilisateur WHERE username = '$username' AND password ='$psd' AND utilisateur.type_compte = 'gestionnaire'";
+  $result = mysqli_query($conn,$sql);
+  if ($result->num_rows> 0) {
+    $row = mysqli_fetch_assoc($result);
+    $_SESSION['username'] = $username;
+    header("location:gestionnaire.php");
+  }
+  else {
+    echo "<script>alert('Email ou mot de passt incorrect')</script>";
+  }
+}
+  
+  $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+  $count = mysqli_num_rows($result);
+
+  if($count == 1) {
+
+    
+  }
+  else{
+    header("location:ok.php");
+     $error = "Your Login Name or Password is invalid";
+    }
+   
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +69,7 @@
                   <label for="name">Email</label>
                 </div>
                 <div class="col-md-3">
-                  <input type="email" name="" id="">
+                  <input type="email" name="" >
                 </div>
 
               </div>
@@ -65,19 +107,19 @@
         <!-- <div class="centered"> -->
           <h2>Connectez à votre compte</h2>
         <!-- </div> -->
-        <form action="action_page.php" method="post">
+        <form action="" method="post">
             <div class="imgcontainer">
               <img src="assets/img/avatar.jpg" alt="Avatar" class="avatar">
             </div>
           
             <div class="container">
               <label for="uname"><b>Nom d'utilisateur</b></label>
-              <input type="text" placeholder="Entrez nom d'utilisateur" name="uname" required>
+              <input type="text" placeholder="Entrez nom d'utilisateur" name="username" required id="" value="<?php $username;?>">
           
               <label for="psw"><b>Mot de passe</b></label>
-              <input type="password" placeholder="Entrez mot de passe" name="psw" required>
+              <input type="password" placeholder="Entrez mot de passe" name="psd" required value="<?php $psd;?>">
           
-              <button type="submit">connecter</button>
+              <button type="submit" name="submit">connecter</button>
               <label>
                 <input type="checkbox" checked="checked" name="remember"> Me rappeler
               </label>
