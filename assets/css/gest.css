@@ -1,0 +1,166 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+/* #e86024 */
+/* #042862 */
+/* #0d4f9b */
+/* Div du logo */
+.log
+{
+  display: flex;
+  width: 90px;
+  position: relative;
+  /* bottom: 10px; */
+
+}
+.mdsold
+{
+  border: #e86024 2px solid;
+}
+.imlog
+{
+  width:50px;
+  height: 50px;
+  position:absolute;
+  top: 20px;
+  left: 15px;
+}
+/* MOdal header color */
+.mhcol
+{
+  background-color: #0d4f9b;
+}
+
+.gauche
+{
+  display: flex;
+  background-color: white;
+}
+
+.sanata
+{
+  background-color: white;
+}
+
+.bijou
+{
+ width: 80px;
+ height: 80px;
+ border : 2px solid black;
+ border-radius: 50%;
+
+}
+/* ground for dec*/
+.decon
+{
+  background-color: #0d4f9b ;
+  width: 225px;
+  position: relative;
+  right: 15px;
+}
+/* For gestionnaire */
+.ok
+{
+  position: relative;
+  bottom: 15px;
+}
+/* trait de separation */
+.trait
+{
+  height: 5px;
+  background-color: #0d4f9b;
+}
+/* Menu */
+ul {
+  list-style-type: none;
+  width: 230px;
+  background-color: #f1f1f1;
+}
+.ubody
+{
+  width: 195px;
+}
+.nav-item a
+{
+  width: 220px;
+  color: black;
+  font-weight: bold;
+}
+
+/* Active du menu */
+li a.actb {
+  background-color: #e86024;
+  color: black;
+  
+}
+/* Faire bouger le ul */
+.bgul
+{
+  /* position: relative; */
+  /* right: 28px; */
+  /* width: 230px; */
+}
+
+/* style du text */
+li a:hover:not(.active) {
+  background-color: #0d4f9b;
+  color: white;
+}
+/* Deconnexion */
+.deco:hover:not(.active) {
+  background-color: red;
+  color: white;
+}
+/* deplacer les icones du profile */
+.bgico
+{
+  position: relative;
+  bottom: 20px;
+}
+
+.geste
+{
+  background-color:#e86024;
+  height: 150px;
+  width: 80px;
+  margin-right: 30px;
+  border-radius: 5px;
+}
+
+.membr
+{
+  background-color:#0d4f9b;
+  margin-right: 30px;
+  border-radius: 5px;
+}
+
+.coti
+{
+  background-color:#e86024;
+  margin-right: 30px;
+  border-radius: 5px;
+}
+.forum
+{
+  background-color:#042862;
+  border-radius: 5px;
+}
+.para
+{
+  font-weight: bold;
+  font-size: 25px;
+  color: white;
+  text-align: center;
+}
+.graphe
+{
+  color: white;
+  text-align: center;
+  position: relative;
+  bottom: 15px;
+  font-weight: bold;
+}
+
