@@ -1,6 +1,3 @@
-    <?php
-        include 'user.php';
-    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,100 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/log.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/utilisateur.css">
+    <link rel="stylesheet" href="assets/css/cotisationges.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Utilisateurs</title>
+    <title>Cotisationde la Tontine</title>
 </head>
-        <!-- MOdal add user -->
   
-  <!-- Modal -->
-  <div class="modal fade" id="adduser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- Modal Cotisation-->
+  <div class="modal fade" id="payco" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ajouter un utilisateur</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Payer la tontine du mois</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="" method="post">
+            <form action="">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-3  mb-3">
-                            <label for="exampleFormControlInput1" class="form-label" >Prenom</label>
-                        </div>
-                        <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Mariama" name="prenom">
-                        </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label for="exampleFormControlInput1" class="form-label">Nom</label>   
-                        </div>
-                        <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Dao" name="nom">
-                            
-                        </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label for="exampleFormControlInput1" class="form-label">Telephone</label>
-                        </div>
-                        <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="75.02.36.45" name="telephone">
-                            
-                        </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label for="exampleFormControlInput1" class="form-label">Email</label>
-                            
-                        </div>
-                        <div class="col-md">
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="exemple@gmail.com" name="email">
-                        </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-md-3">  
-                            <label for="exampleFormControlInput1" class="form-label">Adresse</label>
-                            
-                        </div>
-                        <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Moussabougou" name="adresse">   
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label for="exampleFormControlInput1" class="form-label">Username</label>
-                            
-                        </div>
-                        <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="maria123" name="username">   
-                            
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                        <label for="exampleFormControlInput1" class="form-label">Username</label>
-                        </div>
-
-                        <div class="col">
-                            <select name="compte">
-                            <option value="Membre">Membre</option>
-                            <option value="Gestionnaire">Gestionnaire</option>
-                            </select>
-                        </div>
-                    </div>
+                    <h6>Voulez-vous vraiment effectuer le payement de la tontine du mois dont la béneficiaire est <span>Haoua Coulibaly</span> </h6>
+                </div>
+            </form>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
-                        <button type="submit" name="submit" class="btn text-light" style="background-color:#0d4f9b;">Enregister</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Non</button>
+                        <button type="button" class="btn text-light" style="background-color:#0d4f9b;">Oui</button>
                     </div>
-                </div>  
-            </form>
+            
         </div>
        
       </div>
@@ -110,7 +38,7 @@
   </div>
         <!-- End add user -->
 
-        <!-- Modal mon solde -->
+        <!-- Modal -->
     <div class="modal fade" id="solde" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
         <div class="modal-content mdsold">
@@ -128,9 +56,8 @@
         </div>
         </div>
     </div>
-    <!-- SOlde -->
 
-    <!-- MOdal solde Tontine-->
+    <!-- MOdal solde -->
 
     <div class="modal fade" id="soldeto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
@@ -209,7 +136,7 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link active actb" href="utilisateur.php"><i class="fa-solid fa-user-plus">&nbsp;&nbsp;&nbsp;</i>Utilisateurs</a>
+                                        <a class="nav-link " href="utilisateur.php"><i class="fa-solid fa-user-plus">&nbsp;&nbsp;&nbsp;</i>Utilisateurs</a>
                                     </li>
                                    
                                     <li class="nav-item">
@@ -220,7 +147,7 @@
                                         <a class="nav-link " href="programme.php"><i class="fa-solid fa-timeline">&nbsp;&nbsp;&nbsp;</i>Programme</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="cotisationges.php"><i class="fa-solid fa-money-check-dollar">&nbsp;&nbsp;&nbsp;</i>Cotisation</a>
+                                        <a class="nav-link active actb" href="cotisationges.php"><i class="fa-solid fa-money-check-dollar">&nbsp;&nbsp;&nbsp;</i>Cotisation</a>
                                     </li>
                                     
                                     <li class="nav-item">
@@ -263,64 +190,38 @@
                                     <p>Muso-jè</p>
                                   </div>
                                   <div class="col">
-                                    <a data-bs-toggle="modal" data-bs-target="#adduser"><i class="fa-solid fa-user-plus"></i>Ajouter un utilisateur</a>
+                                    <a data-bs-toggle="modal" data-bs-target="#payco"><span data-bs-toggle="modal" data-bs-target="#payco"><i class="fa-solid fa-money-check-dollar"data-bs-target="#payco"></i>Payer la cotisation</span></a>
                                   </div>
                             </div>
                           
                         </div>
-                        <?php
-                            $conn = mysqli_connect("localhost","root", "");
-                            $bdd = mysqli_select_db($conn,'tontine');
-                            $resultat = "SELECT * FROM utilisateur";
-                            $run = mysqli_query($conn, $resultat);
-
-                            ?>
                         <div class="card-body">
-                          <h3 class="card-title">La liste des utilisateurs</h3>
+                          <h3 class="card-title">La liste des payements effectués</h3>
                           <table class="table table-bordered">
-                            <thead class="table-light">
+                            <thead>
                               <tr>
-                                <th scope="col">Nom</th>
-                                <th scope="col">Prenom</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Heure</th>
+                                <th scope="col">Nom_béneficiaire</th>
+                                <th scope="col">Prénom_béneficiaire</th>
                                 <th scope="col">Telephone</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Adresse</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Compte</th>
-                                <th scope="col">Date_création</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                               </tr>
                             </thead>
-                            <?php
-                                if ($run) 
-                                {                                               
-                                    foreach($run as $row)
-                                    {
-                            ?>
                             <tbody>
                               <tr>
-                                <th scope="row"><?php echo $row['prenom_util'];?></th>
-                                <td><?php echo $row['nom_util'];?></td>
-                                <td><?php echo $row['phone'];?></td>
-                                <td><?php echo $row['email'];?></td>
-                                <td><?php echo $row['adresse'];?></td>
-                                <td><?php echo $row['username'];?></td>
-                                <td><?php echo $row['type_compte'];?></td>
-                                <td><?php echo $row['date_crea'];?></td>
+                                <td scope="row">05/05/2022</td>
+                                <td>16H</td>
+                                <td>75.02.45.63</td>
+                                <td>daomariama@gmail.com</td>
+                                <td>damaria</td
+                                <td></td>
                                 <td>
+
                                 </td>
                               </tr>
                             </tbody>
-
-                            <?php
-                                }
-                                }
-                                else
-                                {
-                                echo "Aucune donnée";
-                                }
-                            ?>
-
                           </table>
                         </div>
                       </div>

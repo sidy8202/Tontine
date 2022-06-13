@@ -1,44 +1,37 @@
 <?php 
-include 'dbconnect.php';
+  require_once 'dbconnect.php';
+  session_start();
+  $conn = mysqli_connect("localhost","root", "");
+  $bdd = mysqli_select_db($conn,'tontine');
 
-session_start();
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if($_SERVER["REQUEST_METHOD"]=="POST") // name of the button given in the form
+{
+  $user = $_REQUEST["username"]; // obtaining the value of the input type in the form by request
+  $pass = $_REQUEST["pass"];
+  $sql= "SELECT username, passwords,type_compte FROM utilisateur WHERE username='".$user."' AND passwords='".$pass."' ";
+  $result= mysqli_query($conn,$sql);
+  $row=mysqli_fetch_array($result);
 
-  $username = mysqli_real_escape_string($conn, $_POST['username']);
-  $psd = mysqli_real_escape_string($conn, $_POST['psd']); 
+    if($row["type_compte"]=="Gestionnaire")
+        {
+          $_SESSION["username"]==$user;
+          header("LOCATION:gestionnaire.php");
+        }
 
-//   $conn = mysqli_connect('username','password','dbname');
-
-  $sql = "SELECT utilisateur.username FROM utilisateur WHERE username = '$username' AND password ='$psd' AND utilisateur.type_compte = 'gestionnaire'";
-  $result = mysqli_query($conn,$sql);
-  if ($result->num_rows> 0) {
-    $row = mysqli_fetch_assoc($result);
-    $_SESSION['username'] = $username;
-    header("location:gestionnaire.php");
-  }
-  else {
-    echo "<script>alert('Email ou mot de passt incorrect')</script>";
-  }
-}
-  
-  $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-
-  $count = mysqli_num_rows($result);
-
-  if($count == 1) {
-
-    
-  }
-  else{
-    header("location:ok.php");
-     $error = "Your Login Name or Password is invalid";
+    elseif($row["type_compte"]=="Membre")
+    {
+      $_SESSION["username"]==$user;
+      header("LOCATION:membrelog.php");
     }
-   
+
+    else
+    {
+      echo "Username or password incorrect";
+    }
+}
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,6 +44,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="shortcut icon" href="assets/img/logotontineM.png" type="image/x-icon">
     <title>login</title>
 </head>
+
+
+
 <body>
 
   <div class="modal fade" id="psw" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -114,12 +110,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
           
             <div class="container">
               <label for="uname"><b>Nom d'utilisateur</b></label>
-              <input type="text" placeholder="Entrez nom d'utilisateur" name="username" required id="" value="<?php $username;?>">
+              <input type="text" placeholder="Entrez nom d'utilisateur" name="username" required id="">
           
               <label for="psw"><b>Mot de passe</b></label>
-              <input type="password" placeholder="Entrez mot de passe" name="psd" required value="<?php $psd;?>">
+              <input type="password" placeholder="Entrez mot de passe" name="pass" required">
           
-              <button type="submit" name="submit">connecter</button>
+              <button type="submit" name="connexion">connecter</button>
               <label>
                 <input type="checkbox" checked="checked" name="remember"> Me rappeler
               </label>

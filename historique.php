@@ -1,6 +1,7 @@
-    <?php
-        include 'user.php';
+<?php
+    // include 'prom.php';
     ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,93 +10,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/log.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/utilisateur.css">
+    <link rel="stylesheet" href="assets/css/historique.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Utilisateurs</title>
+    <title>Historique de tous les programme de la Tontine</title>
 </head>
-        <!-- MOdal add user -->
+<!-- MOdal add user -->
   
   <!-- Modal -->
-  <div class="modal fade" id="adduser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="addpro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ajouter un utilisateur</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Etablir un</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+
+            
         <div class="modal-body">
             <form action="" method="post">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3  mb-3">
-                            <label for="exampleFormControlInput1" class="form-label" >Prenom</label>
+                            <label for="exampleFormControlInput1" class="form-label">Date</label>
                         </div>
                         <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Mariama" name="prenom">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="05/01/2022" name="dates">
                         </div>
                     </div>
     
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="exampleFormControlInput1" class="form-label">Nom</label>   
+                            <label for="exampleFormControlInput1" class="form-label">Heure</label>   
                         </div>
                         <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Dao" name="nom">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="16H30" name="heure">
                             
                         </div>
                     </div>
     
                     <div class="row">
+                        <div class="col-md-3">
+                            <label for="exampleFormControlInput1" class="form-label">Beneficiaire</label>
+                        </div>
+                        <div class="col-md">
+                            <select name="bene" id="">
+                                <?php while($row1=mysqli_fetch_array($run)):;?>
+                                <option value="<?= $row1[0] ?>"><?=$row1[1]." ".$row1[2]?></option>
+                                <?php endwhile;?>>
+                            </select>                            
+                        </div>     
+                    </div>
+    
+                    <!-- <div class="row">
                         <div class="col-md-3">
                             <label for="exampleFormControlInput1" class="form-label">Telephone</label>
-                        </div>
-                        <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="75.02.36.45" name="telephone">
-                            
-                        </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label for="exampleFormControlInput1" class="form-label">Email</label>
                             
                         </div>
                         <div class="col-md">
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="exemple@gmail.com" name="email">
+                            <input type="email" class="form-control" id="exampleFormControlInput1" required="required" placeholder="">
                         </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-md-3">  
-                            <label for="exampleFormControlInput1" class="form-label">Adresse</label>
-                            
-                        </div>
-                        <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Moussabougou" name="adresse">   
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label for="exampleFormControlInput1" class="form-label">Username</label>
-                            
-                        </div>
-                        <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="maria123" name="username">   
-                            
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                        <label for="exampleFormControlInput1" class="form-label">Username</label>
-                        </div>
-
-                        <div class="col">
-                            <select name="compte">
-                            <option value="Membre">Membre</option>
-                            <option value="Gestionnaire">Gestionnaire</option>
-                            </select>
-                        </div>
-                    </div>
+                    </div> -->
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
@@ -110,7 +84,7 @@
   </div>
         <!-- End add user -->
 
-        <!-- Modal mon solde -->
+        <!-- Modal -->
     <div class="modal fade" id="solde" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
         <div class="modal-content mdsold">
@@ -128,9 +102,8 @@
         </div>
         </div>
     </div>
-    <!-- SOlde -->
 
-    <!-- MOdal solde Tontine-->
+    <!-- MOdal solde -->
 
     <div class="modal fade" id="soldeto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
@@ -195,7 +168,7 @@
 
                         <div class="mt-2 ubody">
                             <div class="row border">
-                            <ul class="nav flex-column">
+                                <ul class="nav flex-column">
                                     <li class="nav-item">
                                        
                                       <a class="nav-link " aria-current="page" href=""> <i class="fa-solid fa-house">&nbsp;&nbsp;&nbsp;</i>Table de board</a>
@@ -209,7 +182,7 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link active actb" href="utilisateur.php"><i class="fa-solid fa-user-plus">&nbsp;&nbsp;&nbsp;</i>Utilisateurs</a>
+                                        <a class="nav-link" href="utilisateur.php"><i class="fa-solid fa-user-plus">&nbsp;&nbsp;&nbsp;</i>Utilisateurs</a>
                                     </li>
                                    
                                     <li class="nav-item">
@@ -227,11 +200,11 @@
                                         <a class="nav-link" href="#"><i class="fa-solid fa-money-bill-trend-up">&nbsp;&nbsp;&nbsp;</i>Envoyer la tontine</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="mespayements.php"><i class="fa-solid fa-arrow-up-right-from-square">&nbsp;&nbsp;&nbsp;</i>Mes payements</a>
+                                        <a class="nav-link" href="mespayements.php""><i class="fa-solid fa-arrow-up-right-from-square">&nbsp;&nbsp;&nbsp;</i>Mes payements</a>
                                     </li>
                                     <hr>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="historique.php"><i class="fa-solid fa-clock-rotate-left">&nbsp;&nbsp;&nbsp;</i>Historique Tontine</a>
+                                        <a class="nav-link active actb" href="historique.php"><i class="fa-solid fa-clock-rotate-left">&nbsp;&nbsp;&nbsp;</i>Historique Tontine</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="forum.php"><i class="fa-brands fa-rocketchat">&nbsp;&nbsp;&nbsp;</i>Forum</a>
@@ -263,64 +236,41 @@
                                     <p>Muso-jè</p>
                                   </div>
                                   <div class="col">
-                                    <a data-bs-toggle="modal" data-bs-target="#adduser"><i class="fa-solid fa-user-plus"></i>Ajouter un utilisateur</a>
+                                    <!-- <a data-bs-toggle="modal" data-bs-target="#addpro"><i class="fa-solid fa-timeline"></i><span data-bs-toggle="modal" data-bs-target="#addpro">Etablir le programme</span></a> -->
                                   </div>
                             </div>
                           
                         </div>
-                        <?php
+                        <div class="card-body">
+                          <h3 class="card-title">L'historique de tous les programmes</h3>
+                          <?php
                             $conn = mysqli_connect("localhost","root", "");
-                            $bdd = mysqli_select_db($conn,'tontine');
-                            $resultat = "SELECT * FROM utilisateur";
-                            $run = mysqli_query($conn, $resultat);
+                            
 
                             ?>
-                        <div class="card-body">
-                          <h3 class="card-title">La liste des utilisateurs</h3>
                           <table class="table table-bordered">
-                            <thead class="table-light">
+                            <thead>
+                            <?php
+                               ?>   
                               <tr>
-                                <th scope="col">Nom</th>
-                                <th scope="col">Prenom</th>
-                                <th scope="col">Telephone</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Adresse</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Compte</th>
-                                <th scope="col">Date_création</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Prénom_béneficiaire</th>
+                                <th scope="col">Nom_béneficiaire</th>
+                                
                               </tr>
                             </thead>
-                            <?php
-                                if ($run) 
-                                {                                               
-                                    foreach($run as $row)
-                                    {
-                            ?>
                             <tbody>
                               <tr>
-                                <th scope="row"><?php echo $row['prenom_util'];?></th>
-                                <td><?php echo $row['nom_util'];?></td>
-                                <td><?php echo $row['phone'];?></td>
-                                <td><?php echo $row['email'];?></td>
-                                <td><?php echo $row['adresse'];?></td>
-                                <td><?php echo $row['username'];?></td>
-                                <td><?php echo $row['type_compte'];?></td>
-                                <td><?php echo $row['date_crea'];?></td>
-                                <td>
-                                </td>
+                                <td scope="row"></td>
+                                <td></td>
+                                <td></td>
+                               
+                                
                               </tr>
                             </tbody>
-
                             <?php
-                                }
-                                }
-                                else
-                                {
-                                echo "Aucune donnée";
-                                }
+                                
                             ?>
-
                           </table>
                         </div>
                       </div>

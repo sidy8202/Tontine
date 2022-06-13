@@ -1,6 +1,7 @@
 <?php
-    session_start();
+session_start()
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,8 +64,8 @@
                     <div class="devdiagui">
                         
                         <img src="assets/img/mari.png" class="mt-3 bijou mx-5" alt="" srcset="">   
-                        <p class="text-center mt-1 fw-bold">Mme Ouatt Maria Dao</p>
-                        <p class="text-center fw-bold fs-8 ok">Gestionnaire</p>
+                        <p class="mx-3 mt-1 fw-bold">Mariama Dao</p>
+                        <p class="mx-5 fw-bold fs-8 ok">Gestionnaire</p>
                         
                         
                         <div class="container">
@@ -84,7 +85,8 @@
                         <div class=" ok decon border">
                             <div class="row">
                                    <div class="col-md-11  deco" >
-                                    <a href="nav-link">
+                                       
+                                    <a href="deconnection.php">
                                         <p class="fw-bold  text-white text-center">DECONNEXION</p>
                                     </a>
                                    </div>
@@ -101,46 +103,53 @@
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
                                        
-                                      <a class="nav-link active actb" aria-current="page" href=""> <i class="fa-solid fa-house"></i>Table de board</a>
+                                      <a class="nav-link active actb" aria-current="page" href=""> <i class="fa-solid fa-house">&nbsp;&nbsp;&nbsp;</i>Table de board</a>
                                     </li>
                                     <li class="nav-item">
                                        
-                                      <a class="nav-link"  href="#" data-bs-toggle="modal" data-bs-target="#solde"><i class="fa-solid fa-sack-dollar"></i> Mon solde </a>
+                                      <a class="nav-link"  href="#" data-bs-toggle="modal" data-bs-target="#solde"><i class="fa-solid fa-sack-dollar">&nbsp;&nbsp;&nbsp;</i> Mon solde </a>
                                     </li>
                                     <li class="nav-item">
-                                      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#soldeto"><i class="fa-solid fa-hand-holding-dollar"></i>Solde tontine</a>
-                                      <a class="nav-link" href="compte.php"><i class="fa-solid fa-hand-holding-dollar"></i>Compte Money</a>
+                                      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#soldeto"><i class="fa-solid fa-hand-holding-dollar">&nbsp;&nbsp;&nbsp;</i>Solde tontine</a> 
+                                    </li>
 
-                                    </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="utilisateur.php"><i class="fa-solid fa-user-plus"></i>Utilisateurs</a>
+                                        <a class="nav-link" href="utilisateur.php"><i class="fa-solid fa-user-plus">&nbsp;&nbsp;&nbsp;</i>Utilisateurs</a>
+                                    </li>
+                                   
+                                    <li class="nav-item">
+                                         <a class="nav-link" href="compte.php"><i class="fa-solid fa-hand-holding-dollar">&nbsp;&nbsp;&nbsp;</i>Compte Money</a>   
                                     </li>
                                     <hr class="testhr">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="cotisation.php"><i class="fa-solid fa-money-check-dollar"></i>Cotisation</a>
+                                        <a class="nav-link" href="programme.php"><i class="fa-solid fa-timeline">&nbsp;&nbsp;&nbsp;</i>Programme</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="programme.php"><i class="fa-solid fa-timeline"></i>Programme</a>
+                                        <a class="nav-link" href="cotisationges.php"><i class="fa-solid fa-money-check-dollar">&nbsp;&nbsp;&nbsp;</i>Cotisation</a>
+                                    </li>
+                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"><i class="fa-solid fa-money-bill-trend-up">&nbsp;&nbsp;&nbsp;</i>Envoyer la tontine</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa-solid fa-money-bill-trend-up"></i>Envoyer la tontine</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="forum.php"><i class="fa-brands fa-rocketchat"></i>Forum</a>
+                                        <a class="nav-link" href="mespayements.php"><i class="fa-solid fa-arrow-up-right-from-square">&nbsp;&nbsp;&nbsp;</i>Mes payements</a>
                                     </li>
                                     <hr>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="gallerie.php"><i class="fa-solid fa-file-image"></i>Gallerie</a>
+                                        <a class="nav-link" href="historique.php"><i class="fa-solid fa-clock-rotate-left">&nbsp;&nbsp;&nbsp;</i>Historique Tontine</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa-solid fa-file-image"></i>Gmail</a>
+                                        <a class="nav-link" href="forum.php"><i class="fa-brands fa-rocketchat">&nbsp;&nbsp;&nbsp;</i>Forum</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="transfers.php"><i class="fa-solid fa-arrow-up-right-from-square"></i>Mes transfers</a>
+                                        <a class="nav-link" href="gallerie.php"><i class="fa-solid fa-file-image">&nbsp;&nbsp;&nbsp;</i>Gallerie</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="historique.php"><i class="fa-solid fa-clock-rotate-left"></i></i>Historique Tontine</a>
+                                        <a class="nav-link" href="#"><i class="fa-solid fa-file-image">&nbsp;&nbsp;&nbsp;</i>Gmail</a>
                                     </li>
+                                    
+                                    <hr class="testhr">
+                                    
                                     <!-- <li class="nav-item">
                                       <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                                     </li> -->
@@ -182,24 +191,45 @@
                                 </div>
                             </div>
                         </div>
-
+                        <?php
+                            $conn = mysqli_connect("localhost","root", "");
+                            $bdd = mysqli_select_db($conn,'tontine');
+                            $test = "SELECT COUNT('type_compte') 
+                            FROM utilisateur";
+                        
+                            $run = mysqli_query($conn, $test);
+                        ?>
                         <div class="row border mt-3 haoua">
-                            <div class="col-xl col-md col-sm geste" onclick="location.href='utilisateur.html';">
-                                <p class="para mt-5">20</p>
+                                <?php
+                                    if ($run) 
+                                    {                                               
+                                        foreach($run as $row)
+                                        {
+                                ?>
+                            <div class="col-xl col-md col-sm geste" onclick="location.href='';">
+                                <p class="para mt-5"><?php echo $row['type_compte'];?></p>
+                                <?php
+                                    }
+                                    }
+                                    else
+                                    {
+                                    echo "Aucune donnée";
+                                    }
+                            ?>
                                 <p class="graphe">Utilisateurs</p>
                             </div>
 
-                            <div class="col-xl col-md col-sm membr"onclick="location.href='cotisation.html';">
+                            <div class="col-xl col-md col-sm membr"onclick="location.href='cotisationges.php';">
                                 <p class="col-xl para mt-5">12</p>
                                 <p class="graphe">Cotisation</p>
                             </div>
-                            <div class="col-xl co-mdl col-sm coti" onclick="location.href='';">
-                                <p class="para mt-5">2.000.000Fcfa</p>
-                                <p class="graphe">Mon solde</p>
+                            <div class="col-xl co-mdl col-sm coti" onclick="location.href='programme.php';">
+                                <p class="para mt-5">12</p>
+                                <p class="graphe">Programmes</p>
                             </div>
                             <div class="col-xl col-md col-sm forum">
-                                <p class="para mt-5">5.000.000Fcfa</p>
-                                <p class="graphe">Solde Tontine</p>
+                                <p class="para mt-5">7</p>
+                                <p class="graphe">Mes transfers</p>
                             </div>
                         </div>
                         <div class="row mt-3 border">
