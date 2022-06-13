@@ -1,5 +1,5 @@
-    <?php
-        include 'user.php';
+<?php
+        // include 'money.php';
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,93 +9,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/log.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/utilisateur.css">
+    <link rel="stylesheet" href="assets/css/mespaiyements.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Utilisateurs</title>
+    <title>Historique de mes payements</title>
 </head>
-        <!-- MOdal add user -->
+        <!-- MOdal add money account -->
   
   <!-- Modal -->
   <div class="modal fade" id="adduser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ajouter un utilisateur</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Creer un compte Money</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <?php
+                $conn = mysqli_connect("localhost","root", "");
+                $bdd = mysqli_select_db($conn,'tontine');
+                $query = "SELECT * FROM utilisateur";
+                $run = mysqli_query($conn, $query);
+            ?>
         <div class="modal-body">
             <form action="" method="post">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-3  mb-3">
-                            <label for="exampleFormControlInput1" class="form-label" >Prenom</label>
+                        <div class="col-md-5 mb-3">
+                            <label for="exampleFormControlInput1" class="form-label" >Numero de compte</label>
                         </div>
                         <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Mariama" name="prenom">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" name="numcompte">
                         </div>
                     </div>
     
                     <div class="row">
-                        <div class="col-md-3">
-                            <label for="exampleFormControlInput1" class="form-label">Nom</label>   
+                        <div class="col-md-5">
+                            <label for="exampleFormControlInput1" class="form-label">Solde de base</label>   
                         </div>
                         <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Dao" name="nom">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" name="soldeb">
                             
                         </div>
                     </div>
     
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label for="exampleFormControlInput1" class="form-label">Telephone</label>
+                    <div class="row mt-3">
+                        <div class="col-md-5">
+                            <label for="exampleFormControlInput1" class="form-label">Utlisateur</label>
                         </div>
                         <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="75.02.36.45" name="telephone">
-                            
+                            <select name="userc" id="">
+                                <?php while($row1=mysqli_fetch_array($run)):;?>
+                                <option value="<?= $row1[0] ?>"><?=$row1[1]." ".$row1[2]?></option>
+                                <?php endwhile;?>>
+                            </select>       
                         </div>
                     </div>
     
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label for="exampleFormControlInput1" class="form-label">Email</label>
-                            
-                        </div>
-                        <div class="col-md">
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="exemple@gmail.com" name="email">
-                        </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-md-3">  
-                            <label for="exampleFormControlInput1" class="form-label">Adresse</label>
-                            
-                        </div>
-                        <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Moussabougou" name="adresse">   
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label for="exampleFormControlInput1" class="form-label">Username</label>
-                            
-                        </div>
-                        <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="maria123" name="username">   
-                            
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                        <label for="exampleFormControlInput1" class="form-label">Username</label>
-                        </div>
-
-                        <div class="col">
-                            <select name="compte">
-                            <option value="Membre">Membre</option>
-                            <option value="Gestionnaire">Gestionnaire</option>
-                            </select>
-                        </div>
-                    </div>
+                   
+                       
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
@@ -209,25 +179,25 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link active actb" href="utilisateur.php"><i class="fa-solid fa-user-plus">&nbsp;&nbsp;&nbsp;</i>Utilisateurs</a>
+                                        <a class="nav-link " href="utilisateur.php"><i class="fa-solid fa-user-plus">&nbsp;&nbsp;&nbsp;</i>Utilisateurs</a>
                                     </li>
                                    
                                     <li class="nav-item">
-                                         <a class="nav-link" href="compte.php"><i class="fa-solid fa-hand-holding-dollar">&nbsp;&nbsp;&nbsp;</i>Compte Money</a>   
+                                         <a class="nav-link " href="compte.php"><i class="fa-solid fa-hand-holding-dollar">&nbsp;&nbsp;&nbsp;</i>Compte Money</a>   
                                     </li>
                                     <hr class="testhr">
                                     <li class="nav-item">
                                         <a class="nav-link " href="programme.php"><i class="fa-solid fa-timeline">&nbsp;&nbsp;&nbsp;</i>Programme</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="cotisationges.php"><i class="fa-solid fa-money-check-dollar">&nbsp;&nbsp;&nbsp;</i>Cotisation</a>
+                                        <a class="nav-link " href="cotisationges.php"><i class="fa-solid fa-money-check-dollar">&nbsp;&nbsp;&nbsp;</i>Cotisation</a>
                                     </li>
                                     
                                     <li class="nav-item">
                                         <a class="nav-link" href="#"><i class="fa-solid fa-money-bill-trend-up">&nbsp;&nbsp;&nbsp;</i>Envoyer la tontine</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="mespayements.php"><i class="fa-solid fa-arrow-up-right-from-square">&nbsp;&nbsp;&nbsp;</i>Mes payements</a>
+                                        <a class="nav-link active actb" href="mespayements.php"><i class="fa-solid fa-arrow-up-right-from-square">&nbsp;&nbsp;&nbsp;</i>Mes Payements</a>
                                     </li>
                                     <hr>
                                     <li class="nav-item">
@@ -263,7 +233,7 @@
                                     <p>Muso-jè</p>
                                   </div>
                                   <div class="col">
-                                    <a data-bs-toggle="modal" data-bs-target="#adduser"><i class="fa-solid fa-user-plus"></i>Ajouter un utilisateur</a>
+                                    <!-- <a data-bs-toggle="modal" data-bs-target="#adduser"><i class="fa-solid fa-user-plus"></i>Creer un compte Money</a> -->
                                   </div>
                             </div>
                           
@@ -271,44 +241,37 @@
                         <?php
                             $conn = mysqli_connect("localhost","root", "");
                             $bdd = mysqli_select_db($conn,'tontine');
-                            $resultat = "SELECT * FROM utilisateur";
-                            $run = mysqli_query($conn, $resultat);
-
+                            $resultat = "SELECT compte_user.num_compte_user, utilisateur.prenom_util, utilisateur.nom_util
+                            FROM compte_user
+                            INNER JOIN utilisateur ON compte_user.id_utilisateur = utilisateur.id_utilisateur";
+                            $test = mysqli_query($conn, $resultat);
                             ?>
                         <div class="card-body">
-                          <h3 class="card-title">La liste des utilisateurs</h3>
+                          <h3 class="card-title">L'historique de vos payements</h3>
                           <table class="table table-bordered">
                             <thead class="table-light">
                               <tr>
-                                <th scope="col">Nom</th>
-                                <th scope="col">Prenom</th>
-                                <th scope="col">Telephone</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Adresse</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Compte</th>
-                                <th scope="col">Date_création</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Date de payement</th>
+                                <th scope="col">Prenom_béneficiaire</th>
+                                <th scope="col">Nom_béneficiaire</th>
+                                <th scope="col">Montant</th>
+
                               </tr>
                             </thead>
-                            <?php
-                                if ($run) 
-                                {                                               
-                                    foreach($run as $row)
-                                    {
-                            ?>
-                            <tbody>
+
+                                <?php
+                                    if ($test) 
+                                    {                                               
+                                        foreach($test as $row)
+                                        {
+                                ?>
+
+                            <tbody>  
                               <tr>
-                                <th scope="row"><?php echo $row['prenom_util'];?></th>
+                                <th scope="row"><?php echo $row['num_compte_user'];?></th>
+                                <td><?php echo $row['prenom_util'];?></td>
                                 <td><?php echo $row['nom_util'];?></td>
-                                <td><?php echo $row['phone'];?></td>
-                                <td><?php echo $row['email'];?></td>
-                                <td><?php echo $row['adresse'];?></td>
-                                <td><?php echo $row['username'];?></td>
-                                <td><?php echo $row['type_compte'];?></td>
-                                <td><?php echo $row['date_crea'];?></td>
-                                <td>
-                                </td>
+                        
                               </tr>
                             </tbody>
 

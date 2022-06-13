@@ -1,3 +1,38 @@
+<?php 
+  require_once 'dbconnect.php';
+  session_start();
+  $conn = mysqli_connect("localhost","root", "");
+  $bdd = mysqli_select_db($conn,'tontine');
+
+
+if($_SERVER["REQUEST_METHOD"]=="POST") // name of the button given in the form
+{
+  $user = $_REQUEST["username"]; // obtaining the value of the input type in the form by request
+  $pass = $_REQUEST["pass"];
+  $sql= "SELECT username, passwords,type_compte FROM utilisateur WHERE username='".$user."' AND passwords='".$pass."' ";
+  $result= mysqli_query($conn,$sql);
+  $row=mysqli_fetch_array($result);
+
+    if($row["type_compte"]=="Gestionnaire")
+        {
+          $_SESSION["username"]==$user;
+          header("LOCATION:gestionnaire.php");
+        }
+
+    elseif($row["type_compte"]=="Membre")
+    {
+      $_SESSION["username"]==$user;
+      header("LOCATION:membrelog.php");
+    }
+
+    else
+    {
+      echo "Username or password incorrect";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +44,9 @@
     <link rel="shortcut icon" href="assets/img/logotontineM.png" type="image/x-icon">
     <title>login</title>
 </head>
+
+
+
 <body>
 
   <div class="modal fade" id="psw" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -27,7 +65,7 @@
                   <label for="name">Email</label>
                 </div>
                 <div class="col-md-3">
-                  <input type="email" name="" id="">
+                  <input type="email" name="" >
                 </div>
 
               </div>
@@ -65,19 +103,19 @@
         <!-- <div class="centered"> -->
           <h2>Connectez à votre compte</h2>
         <!-- </div> -->
-        <form action="action_page.php" method="post">
+        <form action="" method="post">
             <div class="imgcontainer">
               <img src="assets/img/avatar.jpg" alt="Avatar" class="avatar">
             </div>
           
             <div class="container">
               <label for="uname"><b>Nom d'utilisateur</b></label>
-              <input type="text" placeholder="Entrez nom d'utilisateur" name="uname" required>
+              <input type="text" placeholder="Entrez nom d'utilisateur" name="username" required id="">
           
               <label for="psw"><b>Mot de passe</b></label>
-              <input type="password" placeholder="Entrez mot de passe" name="psw" required>
+              <input type="password" placeholder="Entrez mot de passe" name="pass" required">
           
-              <button type="submit">connecter</button>
+              <button type="submit" name="connexion">connecter</button>
               <label>
                 <input type="checkbox" checked="checked" name="remember"> Me rappeler
               </label>

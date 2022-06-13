@@ -173,47 +173,55 @@
 
                         <div class="mt-2 ubody">
                             <div class="row border">
-                                <ul class="nav flex-column">
+                            <ul class="nav flex-column">
                                     <li class="nav-item">
                                        
-                                      <a class="nav-link " aria-current="page" href="gestionnaire.php"> <i class="fa-solid fa-house"></i>Table de board</a>
+                                      <a class="nav-link " aria-current="page" href=""> <i class="fa-solid fa-house">&nbsp;&nbsp;&nbsp;</i>Table de board</a>
                                     </li>
                                     <li class="nav-item">
                                        
-                                      <a class="nav-link"  href="#" data-bs-toggle="modal" data-bs-target="#solde"><i class="fa-solid fa-sack-dollar"></i> Mon solde </a>
+                                      <a class="nav-link"  href="#" data-bs-toggle="modal" data-bs-target="#solde"><i class="fa-solid fa-sack-dollar">&nbsp;&nbsp;&nbsp;</i> Mon solde </a>
                                     </li>
                                     <li class="nav-item">
-                                      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#soldeto"><i class="fa-solid fa-hand-holding-dollar"></i>Solde tontine</a>
+                                      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#soldeto"><i class="fa-solid fa-hand-holding-dollar">&nbsp;&nbsp;&nbsp;</i>Solde tontine</a> 
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="utilisateur.php"><i class="fa-solid fa-user-plus">&nbsp;&nbsp;&nbsp;</i>Utilisateurs</a>
+                                    </li>
+                                   
+                                    <li class="nav-item">
+                                         <a class="nav-link" href="compte.php"><i class="fa-solid fa-hand-holding-dollar">&nbsp;&nbsp;&nbsp;</i>Compte Money</a>   
+                                    </li>
+                                    <hr class="testhr">
+                                    <li class="nav-item">
+                                        <a class="nav-link active actb" href="programme.php"><i class="fa-solid fa-timeline">&nbsp;&nbsp;&nbsp;</i>Programme</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="utilisateur.php"><i class="fa-solid fa-user-plus"></i>Utilisateurs</a>
+                                        <a class="nav-link" href="cotisationges.php"><i class="fa-solid fa-money-check-dollar">&nbsp;&nbsp;&nbsp;</i>Cotisation</a>
+                                    </li>
+                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"><i class="fa-solid fa-money-bill-trend-up">&nbsp;&nbsp;&nbsp;</i>Envoyer la tontine</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="mespayements.php""><i class="fa-solid fa-arrow-up-right-from-square">&nbsp;&nbsp;&nbsp;</i>Mes payements</a>
                                     </li>
                                     <hr>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="cotisation.php"><i class="fa-solid fa-money-check-dollar"></i>Cotisation</a>
+                                        <a class="nav-link" href="historique.php"><i class="fa-solid fa-clock-rotate-left">&nbsp;&nbsp;&nbsp;</i>Historique Tontine</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link active actb" href="programme.php"><i class="fa-solid fa-timeline"></i>Programme</a>
+                                        <a class="nav-link" href="forum.php"><i class="fa-brands fa-rocketchat">&nbsp;&nbsp;&nbsp;</i>Forum</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa-solid fa-money-bill-trend-up"></i>Envoyer la tontine</a>
+                                        <a class="nav-link" href="gallerie.php"><i class="fa-solid fa-file-image">&nbsp;&nbsp;&nbsp;</i>Gallerie</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="forum.php"><i class="fa-brands fa-rocketchat"></i>Forum</a>
+                                        <a class="nav-link" href="#"><i class="fa-solid fa-file-image">&nbsp;&nbsp;&nbsp;</i>Gmail</a>
                                     </li>
-                                    <hr>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="gallerie.php"><i class="fa-solid fa-file-image"></i>Gallerie</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa-solid fa-file-image"></i>Gmail</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="transfers.php"><i class="fa-solid fa-arrow-up-right-from-square"></i>Mes transfers</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="historique.php"><i class="fa-solid fa-clock-rotate-left"></i></i>Historique Tontine</a>
-                                    </li>
+                                    
+                                    <hr class="testhr">
                                     <!-- <li class="nav-item">
                                       <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                                     </li> -->
@@ -240,30 +248,49 @@
                         </div>
                         <div class="card-body">
                           <h3 class="card-title">Le programme de l'année</h3>
+                          <?php
+                            $conn = mysqli_connect("localhost","root", "");
+                            $bdd = mysqli_select_db($conn,'tontine');
+                            $resultat = "SELECT programme.date_progra,  utilisateur.prenom_util, utilisateur.nom_util
+                            FROM programme
+                            INNER JOIN utilisateur ON programme.id_utilisateur = utilisateur.id_utilisateur";
+                            $do = mysqli_query($conn, $resultat);
+
+                            ?>
                           <table class="table table-bordered">
                             <thead>
+                            <?php
+                                    if ($do) 
+                                    {                                               
+                                        foreach($do as $row)
+                                        {
+                                ?>
                               <tr>
                                 <th scope="col">Date</th>
-                                <th scope="col">Heure</th>`
-                                <th scope="col">Nom_béneficiaire</th>
                                 <th scope="col">Prénom_béneficiaire</th>
+                                <th scope="col">Nom_béneficiaire</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <td scope="row"></td>
-                                <td></td>
-                                <td></td>
+                                <td scope="row"><?php echo $row['date_progra'];?></td>
+                                <td><?php echo $row['prenom_util'];?></td>
+                                <td><?php echo $row['nom_util'];?></td>
                                 <td></td>
                                 <td></td
-                                <td></td>
-                                <td>
-
-                                </td>
+                                
                               </tr>
                             </tbody>
+                            <?php
+                                }
+                                }
+                                else
+                                {
+                                echo "Aucune donnée";
+                                }
+                            ?>
                           </table>
                         </div>
                       </div>
