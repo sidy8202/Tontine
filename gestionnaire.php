@@ -1,5 +1,8 @@
 <?php
-session_start()
+session_start();
+$conn = mysqli_connect("localhost","root", "");
+$bdd = mysqli_select_db($conn,'tontine');
+
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +67,7 @@ session_start()
                     <div class="devdiagui">
                         
                         <img src="assets/img/mari.png" class="mt-3 bijou mx-5" alt="" srcset="">   
-                        <p class="mx-3 mt-1 fw-bold">Mariama Dao</p>
+                           <span class="fw-bold mx-5"><?= @$_SESSION['username']?></span>          
                         <p class="mx-5 fw-bold fs-8 ok">Gestionnaire</p>
                         
                         
@@ -191,31 +194,12 @@ session_start()
                                 </div>
                             </div>
                         </div>
-                        <?php
-                            $conn = mysqli_connect("localhost","root", "");
-                            $bdd = mysqli_select_db($conn,'tontine');
-                            $test = "SELECT COUNT('type_compte') 
-                            FROM utilisateur";
                         
-                            $run = mysqli_query($conn, $test);
-                        ?>
                         <div class="row border mt-3 haoua">
-                                <?php
-                                    if ($run) 
-                                    {                                               
-                                        foreach($run as $row)
-                                        {
-                                ?>
+                                
                             <div class="col-xl col-md col-sm geste" onclick="location.href='';">
-                                <p class="para mt-5"><?php echo $row['type_compte'];?></p>
-                                <?php
-                                    }
-                                    }
-                                    else
-                                    {
-                                    echo "Aucune donnée";
-                                    }
-                            ?>
+                           
+                               
                                 <p class="graphe">Utilisateurs</p>
                             </div>
 

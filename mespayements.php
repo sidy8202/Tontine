@@ -1,6 +1,6 @@
 <?php
-        // include 'money.php';
-    ?>
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,12 +23,7 @@
           <h5 class="modal-title" id="exampleModalLabel">Creer un compte Money</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <?php
-                $conn = mysqli_connect("localhost","root", "");
-                $bdd = mysqli_select_db($conn,'tontine');
-                $query = "SELECT * FROM utilisateur";
-                $run = mysqli_query($conn, $query);
-            ?>
+       
         <div class="modal-body">
             <form action="" method="post">
                 <div class="container">
@@ -130,7 +125,7 @@
                     <div class="devdiagui">
                         
                         <img src="assets/img/mari.png" class="mt-3 bijou mx-5" alt="" srcset="">   
-                        <p class="text-center mt-1 fw-bold">Mme Ouatt Maria Dao</p>
+                        <span class="fw-bold mx-5"><?= @$_SESSION['username']?></span>            
                         <p class="text-center fw-bold fs-8 ok">Gestionnaire</p>
                         
                         
@@ -239,12 +234,7 @@
                           
                         </div>
                         <?php
-                            $conn = mysqli_connect("localhost","root", "");
-                            $bdd = mysqli_select_db($conn,'tontine');
-                            $resultat = "SELECT compte_user.num_compte_user, utilisateur.prenom_util, utilisateur.nom_util
-                            FROM compte_user
-                            INNER JOIN utilisateur ON compte_user.id_utilisateur = utilisateur.id_utilisateur";
-                            $test = mysqli_query($conn, $resultat);
+                            
                             ?>
                         <div class="card-body">
                           <h3 class="card-title">L'historique de vos payements</h3>
@@ -259,30 +249,18 @@
                               </tr>
                             </thead>
 
-                                <?php
-                                    if ($test) 
-                                    {                                               
-                                        foreach($test as $row)
-                                        {
-                                ?>
+                               
 
                             <tbody>  
                               <tr>
-                                <th scope="row"><?php echo $row['num_compte_user'];?></th>
-                                <td><?php echo $row['prenom_util'];?></td>
-                                <td><?php echo $row['nom_util'];?></td>
+                                <th scope="row"></th>
+                                <td></td>
+                                <td></td>
                         
                               </tr>
                             </tbody>
 
-                            <?php
-                                }
-                                }
-                                else
-                                {
-                                echo "Aucune donnée";
-                                }
-                            ?>
+                            
 
                           </table>
                         </div>

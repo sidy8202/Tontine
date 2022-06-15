@@ -1,7 +1,11 @@
 <?php
+<<<<<<< HEAD
 include'dbconnect.php';
 session_start();
 
+=======
+session_start();
+>>>>>>> 0f5896306409890bb87fecc495dd4540181c6a87
 ?>
 <!DOCTYPE html>
 <html lang="en">
