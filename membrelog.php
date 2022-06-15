@@ -43,7 +43,6 @@ session_start();
                 <div class="col-4">
                     <img src="assets/img/log.png" style="width: 100px; height: 100px;" alt="">
                 </div>
-<<<<<<< HEAD
                 <div class="dashbord"> 
                     <ul>
                         <li><p><i class="fa fa-user"></i>&nbsp; <a href="compte.html">Compte</a></p></li>
@@ -56,7 +55,6 @@ session_start();
                     <div class="pimg">
                         <img src="/Tontine/assets/img/aaa.jpg" alt="">
 
-=======
                 <div class="col-6" style="margin-top: 30px;">
                     <p><a style="text-decoration: none; color: #fff;" href="compte.php"><i class="fa fa-user"></i>&nbsp; Djeneba KOUMARE</a></p>
                 </div>
@@ -100,7 +98,6 @@ session_start();
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam ullam dolorum ex voluptates. Sapiente, temporibus?</p>
                             </div> 
                         </div>
->>>>>>> fb4111c5770de6f7f7fd9a65a39bce5327e88dc7
                     </div> 
                 <!-- le footer -->
         <div class="footer" style="text-align: center;">
