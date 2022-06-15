@@ -1,6 +1,8 @@
 <?php
-        include 'money.php';
-    ?>
+
+session_start();
+include 'money.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +13,7 @@
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/compte.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Utilisateurs</title>
+    <title>COmpte Money</title>
 </head>
         <!-- MOdal add money account -->
   
@@ -130,7 +132,8 @@
                     <div class="devdiagui">
                         
                         <img src="assets/img/mari.png" class="mt-3 bijou mx-5" alt="" srcset="">   
-                        <p class="text-center mt-1 fw-bold">Mme Ouatt Maria Dao</p>
+                        <span class="fw-bold mx-5"><?= @$_SESSION['username']?></span>          
+
                         <p class="text-center fw-bold fs-8 ok">Gestionnaire</p>
                         
                         

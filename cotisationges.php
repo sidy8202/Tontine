@@ -1,3 +1,30 @@
+<?php
+session_start();   
+
+ 
+   
+
+    if (isset($_POST['cotiser'])){
+
+        
+        $id_util = $_POST['idUtil'];
+        $id_program = $_POST['idProgram'];
+
+        ///Star the query//
+
+        $conn = mysqli_connect("localhost","root", "");
+        $bdd = mysqli_select_db($conn,'tontine');
+        $query = "INSERT INTO cotisation (date_payement,heure_payement,Id_utilisateur,Id_programme) values (date('Y-m-d'),date('H:i:s'),$id_util,$id_program)";
+        $do = mysqli_query($conn, $query);
+        echo "Donnees inserées avec success dans la table Programme";
+
+    }
+    
+  ?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +35,11 @@
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/cotisationges.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Cotisationde la Tontine</title>
+    <title>Cotisation de la Tontine</title>
 </head>
   
   <!-- Modal Cotisation-->
+  <form  method="post">
   <div class="modal fade" id="payco" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -20,17 +48,36 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="">
+                <?php
+                         
+                    $conn = mysqli_connect("localhost","root", "");
+                    $bdd = mysqli_select_db($conn,'tontine');
+                    $bidate = date('m');
+                    $resultat = "SELECT programme.id_programme, programme.date_progra,utilisateur.id_utilisateur,  utilisateur.prenom_util, utilisateur.nom_util
+                    FROM programme
+                    INNER JOIN utilisateur ON programme.id_utilisateur = utilisateur.id_utilisateur WHERE MONTH(programme.date_progra) = $bidate";
+                    $done = mysqli_query($conn, $resultat);
+
+                ?>
+                     
+
+            
                 <div class="container">
-                    <h6>Voulez-vous vraiment effectuer le payement de la tontine du mois dont la béneficiaire est <span>Haoua Coulibaly</span> </h6>
+
+                    <?php while($row2=mysqli_fetch_array($done)):;?>
+                    <h6>Voulez-vous vraiment effectuer le payement de la tontine du mois dont la béneficiaire est <span><?=$row2['prenom_util']." ".$row2['nom_util']?></span> </h6>
+                  <input type="hidden" name="idUtil" value="<?= $row2['id_utilisateur'] ?>">
+                  <input type="hidden" name="idProgram" value="<?= $row2['id_programme'] ?>">
+                    <?php endwhile;?>
+
                 </div>
-            </form>
+            
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Non</button>
-                        <button type="button" class="btn text-light" style="background-color:#0d4f9b;">Oui</button>
+                        <button type="submit" name="cotiser" value =""class="btn text-light" style="background-color:#0d4f9b;">Oui</button>
                     </div>
-            
+            </form>
         </div>
        
       </div>
@@ -87,7 +134,7 @@
                     <div class="devdiagui">
                         
                         <img src="assets/img/mari.png" class="mt-3 bijou mx-5" alt="" srcset="">   
-                        <p class="text-center mt-1 fw-bold">Mme Ouatt Maria Dao</p>
+                        <span class="fw-bold mx-5"><?= @$_SESSION['username']?></span>          
                         <p class="text-center fw-bold fs-8 ok">Gestionnaire</p>
                         
                         
@@ -196,30 +243,24 @@
                           
                         </div>
                         <div class="card-body">
+                       
                           <h3 class="card-title">La liste des payements effectués</h3>
                           <table class="table table-bordered">
                             <thead>
                               <tr>
                                 <th scope="col">Date</th>
-                                <th scope="col">Heure</th>
                                 <th scope="col">Nom_béneficiaire</th>
                                 <th scope="col">Prénom_béneficiaire</th>
-                                <th scope="col">Telephone</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Membres</th>  
                               </tr>
+
                             </thead>
                             <tbody>
                               <tr>
-                                <td scope="row">05/05/2022</td>
-                                <td>16H</td>
-                                <td>75.02.45.63</td>
-                                <td>daomariama@gmail.com</td>
-                                <td>damaria</td
+                                <td scope="row"></td>
                                 <td></td>
-                                <td>
-
-                                </td>
+                                <td></td>
+                                <td></td>   
                               </tr>
                             </tbody>
                           </table>

@@ -1,33 +1,31 @@
 <?php 
-  require_once 'dbconnect.php';
   session_start();
+  require_once 'dbconnect.php';
   $conn = mysqli_connect("localhost","root", "");
   $bdd = mysqli_select_db($conn,'tontine');
-
+  
 
 if($_SERVER["REQUEST_METHOD"]=="POST") // name of the button given in the form
 {
-  $user = $_REQUEST["username"]; // obtaining the value of the input type in the form by request
-  $pass = $_REQUEST["pass"];
+  $user =  $_POST["username"]; // obtaining the value of the input type in the form by request
+  $pass = $_POST["pass"];
   $sql= "SELECT username, passwords,type_compte FROM utilisateur WHERE username='".$user."' AND passwords='".$pass."' ";
   $result= mysqli_query($conn,$sql);
-  $row=mysqli_fetch_array($result);
-
+  $row=mysqli_fetch_array($result);   
+  $_SESSION["username"] = $user; 
     if($row["type_compte"]=="Gestionnaire")
         {
-          $_SESSION["username"]==$user;
           header("LOCATION:gestionnaire.php");
         }
 
     elseif($row["type_compte"]=="Membre")
     {
-      $_SESSION["username"]==$user;
       header("LOCATION:membrelog.php");
     }
 
     else
     {
-      echo "Username or password incorrect";
+     $message = "Username or password incorrect";
     }
 }
 
@@ -58,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") // name of the button given in the form
         </div>
     <div class="modal-body">
         <div class="">
-          <form action="">
+          <form action="POST">
             <div class="container">
               <div class="row mt-3">
                 <div class="col-md-3">
@@ -102,6 +100,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") // name of the button given in the form
       <div class="split right">
         <!-- <div class="centered"> -->
           <h2>Connectez à votre compte</h2>
+          <h6 class="text-center text-danger"><?= @$message ?></h6>
         <!-- </div> -->
         <form action="" method="post">
             <div class="imgcontainer">
