@@ -1,6 +1,8 @@
 <?php
-    include 'prom.php';
-    ?>
+session_start();
+include 'prom.php';
+    
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +41,7 @@
                             <label for="exampleFormControlInput1" class="form-label">Date</label>
                         </div>
                         <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="05/01/2022" name="dates">
+                            <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="05/01/2022" name="dates">
                         </div>
                     </div>
     
@@ -48,7 +50,7 @@
                             <label for="exampleFormControlInput1" class="form-label">Heure</label>   
                         </div>
                         <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="16H30" name="heure">
+                            <input type="time" class="form-control" id="exampleFormControlInput1" placeholder="16H30" name="heure">
                             
                         </div>
                     </div>
@@ -138,7 +140,7 @@
                     <div class="devdiagui">
                         
                         <img src="assets/img/mari.png" class="mt-3 bijou mx-5" alt="" srcset="">   
-                        <p class="text-center mt-1 fw-bold">Mme Ouatt Maria Dao</p>
+                        <span class="fw-bold mx-5"><?= @$_SESSION['username']?></span>          
                         <p class="text-center fw-bold fs-8 ok">Gestionnaire</p>
                         
                         
@@ -249,16 +251,27 @@
                         <div class="card-body">
                           <h3 class="card-title">Le programme de l'année</h3>
                           <?php
+                            $bidate = date('m');
+                            // echo $bidate;
                             $conn = mysqli_connect("localhost","root", "");
                             $bdd = mysqli_select_db($conn,'tontine');
                             $resultat = "SELECT programme.date_progra,  utilisateur.prenom_util, utilisateur.nom_util
                             FROM programme
-                            INNER JOIN utilisateur ON programme.id_utilisateur = utilisateur.id_utilisateur";
+                            INNER JOIN utilisateur ON programme.id_utilisateur = utilisateur.id_utilisateur WHERE programme.date_progra >= NOW()";
                             $do = mysqli_query($conn, $resultat);
 
                             ?>
                           <table class="table table-bordered">
                             <thead>
+                           
+                              <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Prénom_béneficiaire</th>
+                                <th scope="col">Nom_béneficiaire</th>
+                                <th scope="col">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
                             <?php
                                     if ($do) 
                                     {                                               
@@ -266,24 +279,14 @@
                                         {
                                 ?>
                               <tr>
-                                <th scope="col">Date</th>
-                                <th scope="col">Prénom_béneficiaire</th>
-                                <th scope="col">Nom_béneficiaire</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
                                 <td scope="row"><?php echo $row['date_progra'];?></td>
                                 <td><?php echo $row['prenom_util'];?></td>
                                 <td><?php echo $row['nom_util'];?></td>
                                 <td></td>
-                                <td></td
+                                
                                 
                               </tr>
-                            </tbody>
-                            <?php
+                              <?php
                                 }
                                 }
                                 else
@@ -291,6 +294,8 @@
                                 echo "Aucune donnée";
                                 }
                             ?>
+                            </tbody>
+                          
                           </table>
                         </div>
                       </div>

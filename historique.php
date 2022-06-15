@@ -1,6 +1,6 @@
 <?php
-    // include 'prom.php';
-    ?>
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,75 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Historique de tous les programme de la Tontine</title>
 </head>
-<!-- MOdal add user -->
-  
-  <!-- Modal -->
-  <div class="modal fade" id="addpro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Etablir un</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
 
-            
-        <div class="modal-body">
-            <form action="" method="post">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3  mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Date</label>
-                        </div>
-                        <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="05/01/2022" name="dates">
-                        </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label for="exampleFormControlInput1" class="form-label">Heure</label>   
-                        </div>
-                        <div class="col-md">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="16H30" name="heure">
-                            
-                        </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label for="exampleFormControlInput1" class="form-label">Beneficiaire</label>
-                        </div>
-                        <div class="col-md">
-                            <select name="bene" id="">
-                                <?php while($row1=mysqli_fetch_array($run)):;?>
-                                <option value="<?= $row1[0] ?>"><?=$row1[1]." ".$row1[2]?></option>
-                                <?php endwhile;?>>
-                            </select>                            
-                        </div>     
-                    </div>
-    
-                    <!-- <div class="row">
-                        <div class="col-md-3">
-                            <label for="exampleFormControlInput1" class="form-label">Telephone</label>
-                            
-                        </div>
-                        <div class="col-md">
-                            <input type="email" class="form-control" id="exampleFormControlInput1" required="required" placeholder="">
-                        </div>
-                    </div> -->
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
-                        <button type="submit" name="submit" class="btn text-light" style="background-color:#0d4f9b;">Enregister</button>
-                    </div>
-                </div>  
-            </form>
-        </div>
-       
-      </div>
-    </div>
-  </div>
-        <!-- End add user -->
 
         <!-- Modal -->
     <div class="modal fade" id="solde" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -102,6 +34,7 @@
         </div>
         </div>
     </div>
+    
 
     <!-- MOdal solde -->
 
@@ -133,7 +66,7 @@
                     <div class="devdiagui">
                         
                         <img src="assets/img/mari.png" class="mt-3 bijou mx-5" alt="" srcset="">   
-                        <p class="text-center mt-1 fw-bold">Mme Ouatt Maria Dao</p>
+                        <span class="fw-bold mx-5"><?= @$_SESSION['username']?></span>          
                         <p class="text-center fw-bold fs-8 ok">Gestionnaire</p>
                         
                         
@@ -245,13 +178,16 @@
                           <h3 class="card-title">L'historique de tous les programmes</h3>
                           <?php
                             $conn = mysqli_connect("localhost","root", "");
-                            
+                            $bdd = mysqli_select_db($conn,'tontine');
+                            $resultat = "SELECT programme.date_progra,  utilisateur.prenom_util, utilisateur.nom_util
+                            FROM programme
+                            INNER JOIN utilisateur ON programme.id_utilisateur = utilisateur.id_utilisateur";
+                            $do = mysqli_query($conn, $resultat);
 
                             ?>
                           <table class="table table-bordered">
                             <thead>
-                            <?php
-                               ?>   
+                            
                               <tr>
                                 <th scope="col">Date</th>
                                 <th scope="col">Prénom_béneficiaire</th>
@@ -260,17 +196,29 @@
                               </tr>
                             </thead>
                             <tbody>
+                            <?php
+                                    if ($do) 
+                                    {                                               
+                                        foreach($do as $row)
+                                        {
+                                ?>  
                               <tr>
-                                <td scope="row"></td>
-                                <td></td>
-                                <td></td>
+                                <td scope="row"><?php echo $row['date_progra'];?></td>
+                                <td><?php echo $row['prenom_util'];?></td>
+                                <td><?php echo $row['nom_util'];?></td>
                                
                                 
                               </tr>
-                            </tbody>
-                            <?php
-                                
+                              <?php
+                                }
+                                }
+                                else
+                                {
+                                echo "Aucune donnée";
+                                }
                             ?>
+                            </tbody>
+                            
                           </table>
                         </div>
                       </div>

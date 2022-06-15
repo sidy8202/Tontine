@@ -1,6 +1,9 @@
 <?php
 session_start();
+unset($_SESSION);
 session_destroy();
-// Redirect to the login page:
+session_write_close();
 header('Location:login.php');
+die;
 ?>
+exit;
