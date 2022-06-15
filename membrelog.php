@@ -10,10 +10,9 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/Tontine/assets/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="/Tontine/assets/css/membre.css">
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
     <title>Page de membre</title>
-</head>
+</head> 
 <!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Launch demo modal
@@ -28,7 +27,7 @@ session_start();
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-         <h5>Votre solde actuel est de 300.000 FCFA.</h5> 
+            <p>Votre solde actuel est de 300.000 FCFA.</p> 
         </div>
         <!-- <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -37,24 +36,14 @@ session_start();
       </div>
     </div>
   </div>
-<body>
-    <div class="frame">
+<body style="background-color: #0E4E9A;">
         <!-- ici se trouve l'entete -->
-        <section class="block1">
-            <div id="logo">
-                <img src="/Tontine/assets/img/logotontineM.png" style="width: 100px; height: 100px;" alt="">
-            </div>
-            <div class="header" style="background-color: #E86024;">
-                <img src="/Tontine/assets/img/ak.png" style="width: 250px; height: 60px; margin-top: 20px;" alt="">
-                <h1 style="margin-top: 20px;">Muso-Jè</h1>
-                <button name="button" style="width: 200px; height: 60px;"><i class="fa-solid fa-right-from-bracket"></i>&nbsp; Deconnexion</button>
-            </div>
-        </section>
-                    <!-- le block membre -->
-            <div class="aside">
-                <div>
-                    <h2>Membre</h2>
+        <div class="container">
+            <div class="row border" style="background-color: #fdaf8e; margin-top: 10px;">
+                <div class="col-4">
+                    <img src="assets/img/log.png" style="width: 100px; height: 100px;" alt="">
                 </div>
+<<<<<<< HEAD
                 <div class="dashbord"> 
                     <ul>
                         <li><p><i class="fa fa-user"></i>&nbsp; <a href="compte.html">Compte</a></p></li>
@@ -67,25 +56,56 @@ session_start();
                     <div class="pimg">
                         <img src="/Tontine/assets/img/aaa.jpg" alt="">
 
+=======
+                <div class="col-6" style="margin-top: 30px;">
+                    <p><a style="text-decoration: none; color: #fff;" href="compte.php"><i class="fa fa-user"></i>&nbsp; Djeneba KOUMARE</a></p>
+                </div>
+                <div class="col" style="margin-top: 30px;">
+                    <p><a style="text-decoration: none; color: #fff;" href="login.php"><i class="fa-solid fa-right-from-bracket"></i>&nbsp; Deconnexion</a></p> 
+                </div>
+            </div>
+        </div>
+                    <!-- le block membre -->
+                    <div class="container" style="margin-top: 20px;">
+                        <div class="row">
+                            <div class="col-3 border" style="background-color:#042962;">
+                                <h2 style="background-color: #D9D9D9; text-align:center; width:200px; height: auto; margin-left: 30px; margin-bottom: 50px;">Membre</h2>
+                                <ul style="font-size: 20px; list-style: none; color: #fff; margin-left: 10px;">
+                                    <li><p><i class="fa fa-user"></i>&nbsp; <a href="comptem.php" style="text-decoration: none; color:#fff;">Compte</a></p></li>
+                                    <li><p><i class="fa fa-sack-dollar"></i>&nbsp; <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" style="text-decoration: none; color:#fff">Solde</a></p></li>
+                                    <li><p><i class="fa fa-yen-sign"></i>&nbsp; <a href="cotisation.php" style="text-decoration: none; color:#fff;">Cotisation</a></p></li>
+                                    <li><p><i class="fa fa-list"></i>&nbsp; <a href="listmembre.php" style="text-decoration: none; color: #fff;"> Liste des membres</a></p></li>
+                                    <li><p><i class="fa fa-calendar-days"></i>&nbsp; <a href="programm.php" style="text-decoration: none; color:#fff">Programme</a></p></li>
+                                    <li><p><i class="fa fa-comment-dots"></i>&nbsp;<a href="" style="text-decoration: none; color:#fff">Forum</a></p></li>
+                                </ul> 
+                            </div>
+                            <div class="col">
+                                <img class="imi" src="assets/img/aaa.jpg" style="width: 800px; height: 400px;" alt="">
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-3 didi" style=" background:#fdaf8e; border-radius: 5px; margin-left: 100px;">
+                                <h3 style="text-align: center;">Programme</h3>
+                                <hr>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, debitis maiores officia dignissimos magni, eos animi.</p>
+                            </div>
+                            <div class="col-3 didi" style=" background:#fdaf8e; border-radius: 5px; margin-left: 30px;">
+                                <h3 style="text-align: center;">Forum</h3>
+                                <hr>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam ea rem unde nihil corporis temporibus porro quia sapiente.</p>
+                            </div>
+                            <div class="col-3 didi" style=" background:#fdaf8e; border-radius: 5px; margin-left: 30px;">
+                                <h3 style="text-align: center;">Evènements</h3>
+                                <hr>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam ullam dolorum ex voluptates. Sapiente, temporibus?</p>
+                            </div> 
+                        </div>
+>>>>>>> fb4111c5770de6f7f7fd9a65a39bce5327e88dc7
                     </div> 
-                </div> 
-            </div>
-                <!-- le container bootstrap -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6" style="width: 440px; height:220px; background:#d38766; border-radius: 5px;">
-                        <h3>Programme</h3>
-                    </div>
-                    <div class="col-md-6" style="width: 440px; height:220px; background:#d38766; border-radius: 5px; margin-left: 20px;">
-                        <h3>Forum</h3>
-                    </div>
-                </div>  
-            </div>
                 <!-- le footer -->
-        <div class="footer">
+        <div class="footer" style="text-align: center;">
             <p><small>Copyright 2022 par...</small></p>
         </div>
-    </div> 
     <script src="assets/bootstrap/bootstrap.min.js"></script> 
 </body>
 </html>
