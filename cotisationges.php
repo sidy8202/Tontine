@@ -1,14 +1,15 @@
 <?php
 session_start();   
 
- 
-   
+
 
     if (isset($_POST['cotiser'])){
 
         
         $id_util = $_POST['idUtil'];
         $id_program = $_POST['idProgram'];
+      
+        
 
         ///Star the query//
 
@@ -59,15 +60,14 @@ session_start();
                     $done = mysqli_query($conn, $resultat);
 
                 ?>
-                     
-
+                   
             
                 <div class="container">
 
                     <?php while($row2=mysqli_fetch_array($done)):;?>
                     <h6>Voulez-vous vraiment effectuer le payement de la tontine du mois dont la béneficiaire est <span><?=$row2['prenom_util']." ".$row2['nom_util']?></span> </h6>
-                  <input type="hidden" name="idUtil" value="<?= $row2['id_utilisateur'] ?>">
-                  <input type="hidden" name="idProgram" value="<?= $row2['id_programme'] ?>">
+                    <input type="" name="idUtil" value="<?= @$_SESSION['username']?>"> 
+                    <input type="" name="idProgram" value="<?= $row2['id_programme'] ?>">
                     <?php endwhile;?>
 
                 </div>
@@ -244,18 +244,25 @@ session_start();
                         </div>
                         <div class="card-body">
                        
-                          <h3 class="card-title">La liste des payements effectués</h3>
-                          <table class="table table-bordered">
+                         
+                               
+               <table class="table table-bordered">
                             <thead>
                               <tr>
+                                <th><?php echo session_id("id_utilisateur");?></th>  
                                 <th scope="col">Date</th>
                                 <th scope="col">Nom_béneficiaire</th>
                                 <th scope="col">Prénom_béneficiaire</th>
-                                <th scope="col">Membres</th>  
+                                <th scope="col">Payeurs</th>  
                               </tr>
 
                             </thead>
                             <tbody>
+                            <h3 class="card-title">La liste des payements effectués</h3>
+                              <?php
+                                
+                                             
+                              ?>
                               <tr>
                                 <td scope="row"></td>
                                 <td></td>

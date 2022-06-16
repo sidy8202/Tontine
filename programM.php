@@ -43,14 +43,11 @@ session_start();
                 <div class="col">
                     <img src="assets/img/log.png" style="width: 100px; height: 100px;" alt="">
                 </div>
-                <div class="col" style="margin-top: 30px; margin-right: 250px;">
-                    <p><a style="color: #fff;" href=""><i class="fa fa-arrow-left"></i></a></p>
-                </div>
                 <div class="col" style="margin-top: 30px;">
-                    <p><a style="text-decoration: none; color: #fff;" href=""><i class="fa fa-user"></i>&nbsp; @Adja</a></p>
+                    <p><a style="text-decoration: none; color: #fff;" href="compteM.php"><i class="fa fa-user"></i>&nbsp; @Adja</a></p>
                 </div>
                 <div class="col" style="margin-top: 30px; margin-left: 300px;">
-                    <p><a style="text-decoration: none; color: #fff;" href=""><i class="fa-solid fa-right-from-bracket"></i>&nbsp; Deconnexion</a></p> 
+                    <p><a style="text-decoration: none; color: #fff;" href="login.php"><i class="fa-solid fa-right-from-bracket"></i>&nbsp; Deconnexion</a></p> 
                 </div>
             </div>
         </div>
@@ -60,7 +57,7 @@ session_start();
                 <div class="col-md-4 border" style="background-color:#042962; width: 300px; height: 500px;">
                     <h2 style="background-color: #D9D9D9; text-align:center; width:200px; height: auto; margin-left: 40px; margin-bottom: 50px;">Membre</h2>
                     <ul style="font-size: 20px; list-style: none; color: #fff; margin-left: 20px;">
-                        <li><p><i class="fa fa-user"></i>&nbsp; <a href="comptem.php" style="text-decoration: none; color:#fff;">Compte</a></p></li>
+                        <li><p><i class="fa fa-user"></i>&nbsp; <a href="compteM.php" style="text-decoration: none; color:#fff;">Compte</a></p></li>
                         <li><p><i class="fa fa-sack-dollar"></i>&nbsp; <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" style="text-decoration: none; color:#fff">Solde</a></p></li>
                         <li><p><i class="fa fa-yen-sign"></i>&nbsp; <a href="cotisation.php" style="text-decoration: none; color:#fff;">Cotisation</a></p></li>
                         <li><p><i class="fa fa-list"></i>&nbsp; <a href="listmembre.php" style="text-decoration: none; color: #fff;"> Liste des membres</a></p></li>
@@ -70,41 +67,52 @@ session_start();
                 </div>
                 <!-- tableau -->
                 <div class="col-md border bg-light"> 
+                        <?php
+                            
+                            // echo $bidate;
+                            $conn = mysqli_connect("localhost","root", "");
+                            $bdd = mysqli_select_db($conn,'tontine');
+                            $resultat = "SELECT programme.date_progra,  utilisateur.prenom_util, utilisateur.nom_util
+                            FROM programme
+                            INNER JOIN utilisateur ON programme.id_utilisateur = utilisateur.id_utilisateur WHERE programme.date_progra >= NOW()";
+                            $do = mysqli_query($conn, $resultat);
+                           
+                            ?>
                     <div class="row">
-                      <h3 style="text-align: center; background-color: #E86024;">Liste des membres</h3>
+                      <h3 style="text-align: center; background-color: #E86024;">Programme tontine</h3>
                         <table class="table table-bordered" style="text-align: center;">
                             <thead>
                               <tr>
                                 <th scope="col">Date</th>
                                 <th scope="col">Prénom_bénéficiaire</th>
-                                <th scope="col">Nom_bénéficiaire</th>
-                                <th scope="col">Statut</th>
-                                <th scope="col">Adresse</th>   
+                                <th scope="col">Nom_bénéficiaire</th>  
                               </tr>
                             </thead>
+                            
                             <tbody>
+                            <?php
+                              if ($do) 
+                              {                                               
+                                  foreach($do as $row)
+                                  {
+                              ?>                  
+                                 
                               <tr>
-                                <th scope="row"></th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <th scope="row"><?php echo $row['date_progra'];?></td>
+                                <td><?php echo $row['prenom_util'];?></td>
+                                <td><?php echo $row['nom_util'];?></td>
                               </tr>
-                              <tr>
-                                <th scope="row"></th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                              </tr>
-                              <tr>
-                                <th scope="row"></th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                              </tr>
+                             
                             </tbody>
+                            <?php
+                              }
+                                }
+                                 else
+                                {
+                                echo "Aucune donnée";
+                                }
+                            ?>
+
                           </table>
                     </div>
                 </div>

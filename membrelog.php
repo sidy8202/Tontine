@@ -44,7 +44,7 @@ session_start();
                     <img src="assets/img/log.png" style="width: 100px; height: 100px;" alt="">
                 </div>
                 <div class="col-6" style="margin-top: 30px;">
-                    <p><a style="text-decoration: none; color: #fff;" href="compte.php"><i class="fa fa-user"></i>&nbsp; Djeneba KOUMARE</a></p>
+                    <p><a style="text-decoration: none; color: #fff;" href="compteM.php"><i class="fa fa-user"></i>&nbsp; Djeneba KOUMARE</a></p>
                 </div>
                 <div class="col" style="margin-top: 30px;">
                     <p><a style="text-decoration: none; color: #fff;" href="login.php"><i class="fa-solid fa-right-from-bracket"></i>&nbsp; Deconnexion</a></p> 
@@ -57,11 +57,11 @@ session_start();
                             <div class="col-3 border" style="background-color:#042962;">
                                 <h2 style="background-color: #D9D9D9; text-align:center; width:200px; height: auto; margin-left: 30px; margin-bottom: 50px;">Membre</h2>
                                 <ul style="font-size: 20px; list-style: none; color: #fff; margin-left: 10px;">
-                                    <li><p><i class="fa fa-user"></i>&nbsp; <a href="comptem.php" style="text-decoration: none; color:#fff;">Compte</a></p></li>
+                                    <li><p><i class="fa fa-user"></i>&nbsp; <a href="compteM.php" style="text-decoration: none; color:#fff;">Compte</a></p></li>
                                     <li><p><i class="fa fa-sack-dollar"></i>&nbsp; <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" style="text-decoration: none; color:#fff">Solde</a></p></li>
                                     <li><p><i class="fa fa-yen-sign"></i>&nbsp; <a href="cotisation.php" style="text-decoration: none; color:#fff;">Cotisation</a></p></li>
                                     <li><p><i class="fa fa-list"></i>&nbsp; <a href="listmembre.php" style="text-decoration: none; color: #fff;"> Liste des membres</a></p></li>
-                                    <li><p><i class="fa fa-calendar-days"></i>&nbsp; <a href="programm.php" style="text-decoration: none; color:#fff">Programme</a></p></li>
+                                    <li><p><i class="fa fa-calendar-days"></i>&nbsp; <a href="programM.php" style="text-decoration: none; color:#fff">Programme</a></p></li>
                                     <li><p><i class="fa fa-comment-dots"></i>&nbsp;<a href="" style="text-decoration: none; color:#fff">Forum</a></p></li>
                                 </ul> 
                             </div>

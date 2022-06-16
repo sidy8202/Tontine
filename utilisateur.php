@@ -379,7 +379,7 @@
                             $run = mysqli_query($conn, $resultat);
 
                             ?>
-                        <div class="card mx-3 mt-3" style="width: 980px;">
+                        <div class="card mx-2 mt-3" style="width: 800px;">
                             <div class="card-body">
                                 <h3 class="card-title">La liste des utilisateurs</h3>
                                 <table class="table table-bordered">
