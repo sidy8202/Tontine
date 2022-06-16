@@ -3,18 +3,26 @@
   require_once 'dbconnect.php';
   $conn = mysqli_connect("localhost","root", "");
   $bdd = mysqli_select_db($conn,'tontine');
-  
 
 if($_SERVER["REQUEST_METHOD"]=="POST") // name of the button given in the form
 {
   $user =  $_POST["username"]; // obtaining the value of the input type in the form by request
   $pass = $_POST["pass"];
-  $sql= "SELECT username, passwords,type_compte FROM utilisateur WHERE username='".$user."' AND passwords='".$pass."' ";
+ 
+  $sql= "SELECT id_utilisateur, username, passwords,type_compte FROM utilisateur WHERE username='".$user."' AND passwords='".$pass."' ";
   $result= mysqli_query($conn,$sql);
+<<<<<<< HEAD
   $row=mysqli_fetch_array($result);  
   
   $_SESSION["id_utilisateur"] = $userid; 
   $_SESSION["username"] = $user; 
+=======
+  $row=mysqli_fetch_array($result);
+
+  $_SESSION['id_utilisateur'] = $row['id_utilisateur'];
+  $_SESSION["username"] = $user;  
+
+>>>>>>> cf9e425a207fcc5b23d8cc925e7ad28161637862
     if($row["type_compte"]=="Gestionnaire")
         {
           header("LOCATION:gestionnaire.php");
@@ -33,6 +41,26 @@ if($_SERVER["REQUEST_METHOD"]=="POST") // name of the button given in the form
 
 ?>
 
+<?php
+if (isset($_POST['email'])) {
+  $pass= uniqid();
+  $hashedPassword = password_hash($password, xwPASSWORD_DEFAULT);
+
+  $subject = 'Mot de passe oublié';
+  $message = "Bonjour, voici votre nouveau mot de passe : $pass";
+  $headers = 'Content-Type: text/plain; charset="UTF-8"';
+
+  if (mail($_POST['email'], $subject, $message, $headers)) {
+      $stmt = $db->prepare("UPDATE username, passwords SET password = ? WHERE  username='".$user."' AND passwords='".$pass."' 'email='$email' ");
+      $stmt->execute([$hashedPassword, $_POST['email']]);
+      echo "E-mail envoyé";
+  } 
+  
+  else {
+      echo "Une erreur est survenue";
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,51 +73,70 @@ if($_SERVER["REQUEST_METHOD"]=="POST") // name of the button given in the form
     <title>login</title>
 </head>
 
-
-
 <body>
 
   <div class="modal fade" id="psw" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header" style="background-color:  #0D4F9B;">
-          <h5 class="modal-title" id="exampleModalLabel">Reinitialiser le mot de passe</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-    <div class="modal-body">
-        <div class="">
-          <form action="POST">
-            <div class="container">
-              <div class="row mt-3">
-                <div class="col-md-3">
-                  <label for="name">Email</label>
-                </div>
-                <div class="col-md-3">
-                  <input type="email" name="" >
-                </div>
 
-              </div>
-              <div class="row mt-3 ">
-                <div class="col-md-4">
-                  <label for="name">Nouveau mot de passe</label>
+        <div class="modal-header" style="background-color:  #0D4F9B;">
+            <h5 class="modal-title" id="exampleModalLabel">Reinitialiser le mot de passe</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        
+                          <!-- <form method="post">
+                              <div class="container">
+                                  <label for="email"><b>Email</b></label>
+                                  <input type="email" placeholder="Enter Email" name="email" required>
+                                  <button type="submit">Send me a random password</button>
+                              </div>
+                          </form> -->
+
+          <div class="modal-body">
+              <div class="">
+                <form action="" method="post">
+                  <div class="container">
+                    <div class="row mt-3">
+
+                      <div class="col-md-3">
+                        <label for="name">Email</label>
+                      </div>
+
+                      <div class="col-md-3">
+                        <input type="email" name="email" required>
+                      </div>
+
+                    </div>
+                  </div>
+                    <div class="row mt-3 ">
+
+                      <!-- <div class="col-md-4">
+                        <label for="name">Nouveau mot de passe</label>
+                      </div>
+
+                      <div class="col-md-5">
+                        <input type="password" name="motpass" id="">
+                      </div> -->
+
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-5">
-                  <input type="password" name="" id="">
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-success intb" name= "submit" value="Reset Password" type="submit">Envoyer le lien</button>
+                </div>
+                        <!-- <div class="container">
+                          <div class="row">
+                            <div class="col">
+                            <input type="hidden" class="hide" name="token" id="token" value="">
+                            </div>  
+                          </div>
+                        </div> -->
+                </form>
               </div>
-              </div>
-            </div>
-          </form>
-        </div>
-    </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success intb" data-bs-dismiss="modal" >Reinitialiser</button>
-        </div>
+          </div> 
       </div>
     </div>
   </div>
-
-
-
 
     <div class="split left">
         <div class="centered">
@@ -114,7 +161,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") // name of the button given in the form
               <input type="text" placeholder="Entrez nom d'utilisateur" name="username" required id="">
           
               <label for="psw"><b>Mot de passe</b></label>
-              <input type="password" placeholder="Entrez mot de passe" name="pass" required">
+              <input type="password" placeholder="Entrez mot de passe" name="pass" required="">
           
               <button type="submit" name="connexion">connecter</button>
               <label>
@@ -124,7 +171,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST") // name of the button given in the form
           
             <div class="container" style="background-color:#f1f1f1">
               <button type="button" class="cancelbtn">Annuler</button>
-              <span class="psw">Oublié <a href=""  type ="button" data-bs-toggle="modal" data-bs-target="#psw" cursor="pointer">Mot de passe?</a></span>
+              <span class="psw"><a href=""  type ="button" data-bs-toggle="modal" data-bs-target="#psw" cursor="pointer">Mot de passe oublié ?</a></span>
+              <!-- <span class="psw"><a href="forgot_password.php"  data-bs-target="#psw">Mot de passe oublié ?</a></span -->
             </div>
           </form>
       </div>

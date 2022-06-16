@@ -1,15 +1,26 @@
 <?php
 session_start();   
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> cf9e425a207fcc5b23d8cc925e7ad28161637862
     if (isset($_POST['cotiser'])){
       //= get_current_user_id();
         $id_util = $_POST['idUtil'];
       // @$_SESSION["username"] = $_POST['username'];
        // $userId = @$_SESSION['user_id'];
         $id_program = $_POST['idProgram'];
+<<<<<<< HEAD
+=======
+      
+        
+
+>>>>>>> cf9e425a207fcc5b23d8cc925e7ad28161637862
         ///Star the query//
 
-        $conn = mysqli_connect("localhost","root", "");
+        $conn = mysqli_connect("localhost","root", "");     
         $bdd = mysqli_select_db($conn,'tontine');
         $query = "INSERT INTO cotisation (date_payement,heure_payement,Id_utilisateur,Id_programme) values (date('Y-m-d'),date('H:i:s'), $userId,$id_program)";
         $do = mysqli_query($conn, $query);
@@ -57,6 +68,7 @@ session_start();
                     $done = mysqli_query($conn, $resultat);
 
                 ?>
+<<<<<<< HEAD
                      
                   <?php 
                     // echo $bidate;
@@ -75,14 +87,22 @@ session_start();
                     
           
                   ?>
+=======
+                   
+>>>>>>> cf9e425a207fcc5b23d8cc925e7ad28161637862
             
                 <div class="container">
 
                     <?php while($row2=mysqli_fetch_array($done)):;?>
                     <h6>Voulez-vous vraiment effectuer le payement de la tontine du mois dont la béneficiaire est <span><?=$row2['prenom_util']." ".$row2['nom_util']?></span> </h6>
+<<<<<<< HEAD
                     <?= var_dump($row);?>
                   <input type="text" name="userId" value="<?= $row = @$_SESSION['user_id']?>">
                   <input type="text" name="idProgram" value="<?= $row2['id_programme'] ?>">
+=======
+                    <input type="" name="idUtil" value="<?= @$_SESSION["id_utilisateur"] ?>"> 
+                    <input type="" name="idProgram" value="<?= $row2['id_programme'] ?>">
+>>>>>>> cf9e425a207fcc5b23d8cc925e7ad28161637862
                     <?php endwhile;?>
                     
                 </div>
@@ -259,18 +279,25 @@ session_start();
                         </div>
                         <div class="card-body">
                        
-                          <h3 class="card-title">La liste des payements effectués</h3>
-                          <table class="table table-bordered">
+                         
+                               
+               <table class="table table-bordered">
                             <thead>
                               <tr>
+                                
                                 <th scope="col">Date</th>
                                 <th scope="col">Nom_béneficiaire</th>
                                 <th scope="col">Prénom_béneficiaire</th>
-                                <th scope="col">Membres</th>  
+                                <th scope="col">Payeurs</th>  
                               </tr>
 
                             </thead>
                             <tbody>
+                            <h3 class="card-title">La liste des payements effectués</h3>
+                              <?php
+                                
+                                             
+                              ?>
                               <tr>
                                 <td scope="row"></td>
                                 <td></td>

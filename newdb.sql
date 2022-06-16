@@ -1,32 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1
--- Généré le : mer. 15 juin 2022 à 11:50
--- Version du serveur : 10.4.21-MariaDB
--- Version de PHP : 7.3.31
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données : `tontine`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `compte_tontine`
---
-
 CREATE TABLE `compte_tontine` (
   `Id_compte` int(11) NOT NULL,
   `num_compte` varchar(50) NOT NULL,
@@ -70,8 +41,8 @@ INSERT INTO `compte_user` (`id_compte_user`, `num_compte_user`, `solde`, `id_uti
 
 CREATE TABLE `cotisation` (
   `Id_cotisation` int(11) NOT NULL,
-  `date_payement` date DEFAULT current_timestamp(),
-  `heure_payement` time DEFAULT current_timestamp(),
+  `date_payement` date ,
+  `heure_payement` time,
   `montant_payé` varchar(50) DEFAULT '30000',
   `Id_utilisateur` int(11) NOT NULL,
   `Id_programme` int(11) NOT NULL
@@ -129,7 +100,7 @@ CREATE TABLE `utilisateur` (
   `username` varchar(50) DEFAULT NULL,
   `passwords` varchar(50) NOT NULL DEFAULT 'musoje',
   `type_compte` varchar(50) DEFAULT NULL,
-  `date_crea` date NOT NULL DEFAULT current_timestamp()
+  `date_crea` date NOT NULL DEFAULT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -243,6 +214,3 @@ ALTER TABLE `programme`
   ADD CONSTRAINT `programme_ibfk_1` FOREIGN KEY (`Id_utilisateur`) REFERENCES `utilisateur` (`Id_utilisateur`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
