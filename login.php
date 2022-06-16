@@ -11,7 +11,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST") // name of the button given in the form
   $pass = $_POST["pass"];
   $sql= "SELECT username, passwords,type_compte FROM utilisateur WHERE username='".$user."' AND passwords='".$pass."' ";
   $result= mysqli_query($conn,$sql);
-  $row=mysqli_fetch_array($result);   
+  $row=mysqli_fetch_array($result);  
+  
+  $_SESSION["id_utilisateur"] = $userid; 
   $_SESSION["username"] = $user; 
     if($row["type_compte"]=="Gestionnaire")
         {

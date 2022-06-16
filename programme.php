@@ -13,6 +13,8 @@ include 'prom.php';
     <link rel="shortcut icon" href="assets/img/log.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/programme.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Programme de la Tontine</title>
 </head>
@@ -86,12 +88,89 @@ include 'prom.php';
             </form>
         </div>
        
-      </div>
+      </div>  
     </div>
   </div>
-        <!-- End add user -->
+        <!-- End add program -->
 
-        <!-- Modal -->
+        <!-- modal modify Program -->
+
+
+<div class="modal fade" id="editmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modifier un Progamme</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+            <?php
+                $conn = mysqli_connect("localhost","root", "");
+                $bdd = mysqli_select_db($conn,'tontine');
+                $query = "SELECT * FROM utilisateur";
+                $run = mysqli_query($conn, $query);
+            ?>
+        <div class="modal-body">
+            <form action="editpro" method="post">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3  mb-3">
+                            
+                            <label for="exampleFormControlInput1" class="form-label">Date</label>
+                        </div>
+                        <div class="col-md">
+                            <input type="text" class="form-control" id="date_progra"  name="date_progra">
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="exampleFormControlInput1" class="form-label">Heure</label>   
+                        </div>
+                        <div class="col-md">
+                            <input type="text" class="form-control" id="heure"  name="heure">
+                            
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="exampleFormControlInput1" class="form-label">Beneficiaire</label>
+                        </div>
+                        <div class="col-md">
+                            <select name="id_utilisateur" id="id_utilisateur">
+                                <?php while($row1=mysqli_fetch_array($run)):;?>
+                                <option value="<?= $row1[0] ?>"><?=$row1[1]." ".$row1[2]?></option>
+                                <?php endwhile;?>>
+                            </select>                            
+                        </div>     
+                    </div>
+    
+                    <!-- <div class="row">
+                        <div class="col-md-3">
+                            <label for="exampleFormControlInput1" class="form-label">Telephone</label>
+                            
+                        </div>
+                        <div class="col-md">
+                            <input type="email" class="form-control" id="exampleFormControlInput1" required="required" placeholder="">
+                        </div>
+                    </div> -->
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" name="updatedata" class="btn text-light" style="background-color:#0d4f9b;">Enregister</button>
+                    </div>
+                </div>  
+            </form>
+        </div>
+       
+      </div> 
+    </div>
+  </div>
+
+        <!-- End mod  -->
+
+        <!-- Modal  SOlde-->
     <div class="modal fade" id="solde" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
         <div class="modal-content mdsold">
@@ -100,7 +179,7 @@ include 'prom.php';
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <h4 fs-bold>Votre solde est de: 2.000.000Fcfa</h4>
+            <h6 fs-bold>Votre solde est de: 2.000.000Fcfa</h6>
             </div>
             <div class="modal-footer">
             <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
@@ -268,7 +347,7 @@ include 'prom.php';
                                 <th scope="col">Date</th>
                                 <th scope="col">Prénom_béneficiaire</th>
                                 <th scope="col">Nom_béneficiaire</th>
-                                <th scope="col">Action</th>
+                                <th scope="col" colspan="2">Action</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -282,7 +361,13 @@ include 'prom.php';
                                 <td scope="row"><?php echo $row['date_progra'];?></td>
                                 <td><?php echo $row['prenom_util'];?></td>
                                 <td><?php echo $row['nom_util'];?></td>
-                                <td></td>
+                                <td>
+                                    <!-- <a href="" class="btn"><i class="fa-solid fa-pen-to-square edit"></i></a> -->
+                                    <button class="btn btn-primary btn-sm editbtn">Edit</button>
+                                </td>
+                                <td>
+                                    <a href=""><i class="fa-solid fa-trash btn"></i></a>
+                                </td>
                                 
                                 
                               </tr>
@@ -313,6 +398,59 @@ include 'prom.php';
                 </div>
             </div>
         </div>
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="assets/bootstrap/bootstrap.min.js"></script>
+                                
+        <script>
+     $(document).ready(function(){
+
+      $('.editbtn').on('click',function(){
+
+        $('#editmodal').modal('show');
+
+         
+        $tr = $(this).closet('tr');
+          var data = $tr.children("td").map(function() {
+              return $(this).text();
+          }).get();
+             
+          console.log(data);
+          $('#date_progra').val(data[0]);
+          $('#prenom_util').val(data[1]);
+          $('#nom_util').val(data[2]);
+      });
+     });
+   </script>   
+
+<script>
+     $(document).ready(function(){
+
+      $('.editbtn').on('click',function(){
+        $('#modperso').modal('show');
+
+          $tr = $(this).closet('tr');
+          var data = $tr.children("td").map(function() {
+              return $(this).text();
+          }).get();
+          console.log(data);
+          $('#update_id').val(data[0]);
+          $('#codeperso').val(data[1]);
+          $('#nom').val(data[2]);
+          $('#prenom').val(data[3]);
+          $('#civil').val(data[4]);
+          $('#phone').val(data[5]);
+          $('#email').val(data[6]);
+          $('#prof').val(data[7]);
+          $('#speciali').val(data[8]);
+          $('#username').val(data[9]);
+          $('#option').val(data[10]);
+      });
+     });
+   </script>   
+
+
     </body>
 </html>

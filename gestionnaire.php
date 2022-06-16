@@ -5,7 +5,14 @@ $bdd = mysqli_select_db($conn,'tontine');
 
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html>          
+
+
+
+
+
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -67,7 +74,9 @@ $bdd = mysqli_select_db($conn,'tontine');
                     <div class="devdiagui">
                         
                         <img src="assets/img/mari.png" class="mt-3 bijou mx-5" alt="" srcset="">   
-                           <span class="fw-bold mx-5"><?= @$_SESSION['username']?></span>          
+                             
+                           <span class="fw-bold mx-5"><?= $_SESSION["id_utilisateur"] = $userid; ?></span> 
+
                         <p class="mx-5 fw-bold fs-8 ok">Gestionnaire</p>
                         
                         

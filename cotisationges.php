@@ -1,25 +1,23 @@
 <?php
 session_start();   
 
- 
-   
-
     if (isset($_POST['cotiser'])){
-
-        
+      //= get_current_user_id();
         $id_util = $_POST['idUtil'];
+      // @$_SESSION["username"] = $_POST['username'];
+       // $userId = @$_SESSION['user_id'];
         $id_program = $_POST['idProgram'];
-
         ///Star the query//
 
         $conn = mysqli_connect("localhost","root", "");
         $bdd = mysqli_select_db($conn,'tontine');
-        $query = "INSERT INTO cotisation (date_payement,heure_payement,Id_utilisateur,Id_programme) values (date('Y-m-d'),date('H:i:s'),$id_util,$id_program)";
+        $query = "INSERT INTO cotisation (date_payement,heure_payement,Id_utilisateur,Id_programme) values (date('Y-m-d'),date('H:i:s'), $userId,$id_program)";
         $do = mysqli_query($conn, $query);
         echo "Donnees inserées avec success dans la table Programme";
 
     }
-    
+
+
   ?>
 
 
@@ -60,16 +58,33 @@ session_start();
 
                 ?>
                      
+                  <?php 
+                    // echo $bidate;
+                    $conn = mysqli_connect("localhost","root", "");
+                    $bdd = mysqli_select_db($conn,'tontine');
 
+                    $query=mysqli_query($conn,"SELECT * FROM utilisateur WHERE id_utilisateur ='".$_SESSION['username']."'");
+                    if($query)
+                    {
+                      $row=mysqli_fetch_array($query);
+
+                      $_SESSION['user_id']= $row;
+                    }
+
+
+                    
+          
+                  ?>
             
                 <div class="container">
 
                     <?php while($row2=mysqli_fetch_array($done)):;?>
                     <h6>Voulez-vous vraiment effectuer le payement de la tontine du mois dont la béneficiaire est <span><?=$row2['prenom_util']." ".$row2['nom_util']?></span> </h6>
-                  <input type="hidden" name="idUtil" value="<?= $row2['id_utilisateur'] ?>">
-                  <input type="hidden" name="idProgram" value="<?= $row2['id_programme'] ?>">
+                    <?= var_dump($row);?>
+                  <input type="text" name="userId" value="<?= $row = @$_SESSION['user_id']?>">
+                  <input type="text" name="idProgram" value="<?= $row2['id_programme'] ?>">
                     <?php endwhile;?>
-
+                    
                 </div>
             
 
