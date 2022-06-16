@@ -13,7 +13,7 @@ session_start();
 
         ///Star the query//
 
-        $conn = mysqli_connect("localhost","root", "");
+        $conn = mysqli_connect("localhost","root", "");     
         $bdd = mysqli_select_db($conn,'tontine');
         $query = "INSERT INTO cotisation (date_payement,heure_payement,Id_utilisateur,Id_programme) values (date('Y-m-d'),date('H:i:s'),$id_util,$id_program)";
         $do = mysqli_query($conn, $query);
@@ -66,10 +66,10 @@ session_start();
 
                     <?php while($row2=mysqli_fetch_array($done)):;?>
                     <h6>Voulez-vous vraiment effectuer le payement de la tontine du mois dont la béneficiaire est <span><?=$row2['prenom_util']." ".$row2['nom_util']?></span> </h6>
-                    <input type="" name="idUtil" value="<?= @$_SESSION['username']?>"> 
+                    <input type="" name="idUtil" value="<?= @$_SESSION["id_utilisateur"] ?>"> 
                     <input type="" name="idProgram" value="<?= $row2['id_programme'] ?>">
                     <?php endwhile;?>
-
+                    
                 </div>
             
 
@@ -249,7 +249,7 @@ session_start();
                <table class="table table-bordered">
                             <thead>
                               <tr>
-                                <th><?php echo session_id("id_utilisateur");?></th>  
+                                
                                 <th scope="col">Date</th>
                                 <th scope="col">Nom_béneficiaire</th>
                                 <th scope="col">Prénom_béneficiaire</th>

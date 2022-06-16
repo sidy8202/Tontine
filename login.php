@@ -8,10 +8,14 @@ if($_SERVER["REQUEST_METHOD"]=="POST") // name of the button given in the form
 {
   $user =  $_POST["username"]; // obtaining the value of the input type in the form by request
   $pass = $_POST["pass"];
-  $sql= "SELECT username, passwords,type_compte FROM utilisateur WHERE username='".$user."' AND passwords='".$pass."' ";
+ 
+  $sql= "SELECT id_utilisateur, username, passwords,type_compte FROM utilisateur WHERE username='".$user."' AND passwords='".$pass."' ";
   $result= mysqli_query($conn,$sql);
-  $row=mysqli_fetch_array($result);   
-  $_SESSION["username"] = $user; 
+  $row=mysqli_fetch_array($result);
+
+  $_SESSION['id_utilisateur'] = $row['id_utilisateur'];
+  $_SESSION["username"] = $user;  
+
     if($row["type_compte"]=="Gestionnaire")
         {
           header("LOCATION:gestionnaire.php");
