@@ -13,8 +13,7 @@
 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Launch demo modal
   </button> -->
-  
-  <!-- Modal -->
+  <!-- Modal -->;
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -68,6 +67,8 @@
                         <h2 style="text-align: center; background-color: #eb8255; margin-bottom: 50px; width: 300px; border-radius: 5px; margin-left: 250px;">Compte</h2>
                     </div>
                 </div>
+       
+       
                 <div class="row border">
                     <div class="col">
                         <p><i class="fa fa-user"></i>&nbsp;<a href=""; style="text-decoration: none;color:black;">Profil</a></p> 
