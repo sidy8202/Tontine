@@ -78,21 +78,21 @@ session_start();
                                 </ul> 
                             </div>
                             <div class="col">
-                                <img class="imi" src="assets/img/aaa.jpg" style="width: 800px; height: 400px;" alt="">
+                                <img src="assets/img/aaa.jpg" style="width: 800px; height: 400px;" alt="">
                             </div>
                         </div>
                         <div class="row" style="margin-top: 10px;">
-                            <div class="col-3 didi" style=" background:#fdaf8e; border-radius: 5px; margin-left: 100px;">
+                            <div class="col-3" style=" background:#fdaf8e; border-radius: 5px; margin-left: 100px;">
                                 <h3 style="text-align: center;">Programme</h3>
                                 <hr>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, debitis maiores officia dignissimos magni, eos animi.</p>
                             </div>
-                            <div class="col-3 didi" style=" background:#fdaf8e; border-radius: 5px; margin-left: 30px;">
+                            <div class="col-3" style=" background:#fdaf8e; border-radius: 5px; margin-left: 30px;">
                                 <h3 style="text-align: center;">Forum</h3>
                                 <hr>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam ea rem unde nihil corporis temporibus porro quia sapiente.</p>
                             </div>
-                            <div class="col-3 didi" style=" background:#fdaf8e; border-radius: 5px; margin-left: 30px;">
+                            <div class="col-3" style=" background:#fdaf8e; border-radius: 5px; margin-left: 30px;">
                                 <h3 style="text-align: center;">Evènements</h3>
                                 <hr>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam ullam dolorum ex voluptates. Sapiente, temporibus?</p>
