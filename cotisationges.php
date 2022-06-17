@@ -1,34 +1,26 @@
 <?php
 session_start();   
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> cf9e425a207fcc5b23d8cc925e7ad28161637862
     if (isset($_POST['cotiser'])){
       //= get_current_user_id();
-        $id_util = $_POST['idUtil'];
+       
       // @$_SESSION["username"] = $_POST['username'];
+        $id_utilisateur = $_POST['idUtil'];
        // $userId = @$_SESSION['user_id'];
         $id_program = $_POST['idProgram'];
-<<<<<<< HEAD
-=======
       
         
 
->>>>>>> cf9e425a207fcc5b23d8cc925e7ad28161637862
         ///Star the query//
 
         $conn = mysqli_connect("localhost","root", "");     
         $bdd = mysqli_select_db($conn,'tontine');
-        $query = "INSERT INTO cotisation (date_payement,heure_payement,Id_utilisateur,Id_programme) values (date('Y-m-d'),date('H:i:s'), $userId,$id_program)";
+        $query = "INSERT INTO cotisation (id_utilisateur,id_programme) values ($id_utilisateur,$id_program)";
         $do = mysqli_query($conn, $query);
         echo "Donnees inserées avec success dans la table Programme";
-
-    }
-
-
+    }     
   ?>
 
 
@@ -68,41 +60,17 @@ session_start();
                     $done = mysqli_query($conn, $resultat);
 
                 ?>
-<<<<<<< HEAD
-                     
-                  <?php 
-                    // echo $bidate;
-                    $conn = mysqli_connect("localhost","root", "");
-                    $bdd = mysqli_select_db($conn,'tontine');
-
-                    $query=mysqli_query($conn,"SELECT * FROM utilisateur WHERE id_utilisateur ='".$_SESSION['username']."'");
-                    if($query)
-                    {
-                      $row=mysqli_fetch_array($query);
-
-                      $_SESSION['user_id']= $row;
-                    }
-
-
-                    
-          
-                  ?>
-=======
                    
->>>>>>> cf9e425a207fcc5b23d8cc925e7ad28161637862
             
                 <div class="container">
 
                     <?php while($row2=mysqli_fetch_array($done)):;?>
                     <h6>Voulez-vous vraiment effectuer le payement de la tontine du mois dont la béneficiaire est <span><?=$row2['prenom_util']." ".$row2['nom_util']?></span> </h6>
-<<<<<<< HEAD
-                    <?= var_dump($row);?>
-                  <input type="text" name="userId" value="<?= $row = @$_SESSION['user_id']?>">
-                  <input type="text" name="idProgram" value="<?= $row2['id_programme'] ?>">
-=======
-                    <input type="" name="idUtil" value="<?= @$_SESSION["id_utilisateur"] ?>"> 
-                    <input type="" name="idProgram" value="<?= $row2['id_programme'] ?>">
->>>>>>> cf9e425a207fcc5b23d8cc925e7ad28161637862
+                    <input type="hidden" name="idUtil" value="<?= $_SESSION["id_utilisateur"] ?>"> 
+                    <input type="hidden" name="idProgram" value="<?= $row2['id_programme'] ?>">
+                    <!-- <?php
+                    var_dump($_SESSION);
+                    ?> -->
                     <?php endwhile;?>
                     
                 </div>
@@ -190,7 +158,7 @@ session_start();
                         <div class=" ok decon border">
                             <div class="row">
                                    <div class="col-md-11  deco" >
-                                    <a href="nav-link">
+                                    <a href="deconnection.php">
                                         <p class="fw-bold  text-white text-center">DECONNEXION</p>
                                     </a>
                                    </div>
@@ -278,32 +246,53 @@ session_start();
                           
                         </div>
                         <div class="card-body">
-                       
+                        <?php
+                            $conn = mysqli_connect("localhost","root", "");
+                            $bdd = mysqli_select_db($conn,'tontine');
+                            $resultat = "SELECT  cotisation.date_payement dates ,  utilisateur.prenom_util prenom,utilisateur.nom_util nom,(SELECT CONCAT(utilisateur.prenom_util,' ', utilisateur.nom_util)  FROM `programme` INNER JOIN utilisateur ON utilisateur.Id_utilisateur = programme.Id_utilisateur WHERE programme.Id_utilisateur = programme.Id_utilisateur AND programme.Id_programme= cotisation.Id_programme) AS beneficiaire FROM `cotisation` INNER JOIN programme ON cotisation.Id_programme = programme.Id_programme INNER JOIN utilisateur ON cotisation.Id_utilisateur = utilisateur.Id_utilisateur";
+                           
+                            
+                            $do = mysqli_query($conn, $resultat);
+
+                           
+                            ?>
                          
                                
                <table class="table table-bordered">
                             <thead>
                               <tr>
-                                
+                               
                                 <th scope="col">Date</th>
                                 <th scope="col">Nom_béneficiaire</th>
-                                <th scope="col">Prénom_béneficiaire</th>
+                               
                                 <th scope="col">Payeurs</th>  
                               </tr>
 
                             </thead>
                             <tbody>
                             <h3 class="card-title">La liste des payements effectués</h3>
-                              <?php
-                                
-                                             
-                              ?>
+                            <?php
+                            if ($do) 
+                                    {                                               
+                                        foreach($do as $row)
+                                        {
+                                        
+                                      ?>
                               <tr>
-                                <td scope="row"></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>   
+                                <td scope="row"><?php echo $row['dates'];?></td>
+                                <td><?php echo $row['beneficiaire'];?></td>
+                               
+                                <td><?php echo $row['prenom']." ".$row['nom'];?></td>    
                               </tr>
+
+                              <?php
+                                  }
+                                }
+                                else
+                                {
+                                echo "Aucune donnée";
+                                }
+                            ?>
                             </tbody>
                           </table>
                         </div>

@@ -117,7 +117,7 @@
 
             
   <!-- Modal -->
-  <div class="modal fade" id="adduser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="moduser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -209,9 +209,107 @@
       </div>
     </div>
   </div>
-        <!-- End add user -->
 
         <!-- ENd of odify -->
+
+        <!-- Delete User -->
+
+              <!-- Modal -->
+  <div class="modal fade" id="deluser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirmer la suppression</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <h5>Voulez vous vraiment supprimer cette ligne?</h5>
+            <form action="" method="post">
+                <div class="container">
+                    <div class="row mt-2">
+                        <div class="col-md-3  mb-3">
+                            <label for="exampleFormControlInput1" class="form-label" >Prenom</label>
+                        </div>
+                        <div class="col-md">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Mariama" name="prenom" required>
+                        </div>
+                    </div>
+    
+                    <div class="row mt-2">
+                        <div class="col-md-3">
+                            <label for="exampleFormControlInput1" class="form-label">Nom</label>   
+                        </div>
+                        <div class="col-md">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Dao" name="nom" required>
+                            
+                        </div>
+                    </div>
+    
+                    <div class="row mt-2">
+                        <div class="col-md-3">
+                            <label for="exampleFormControlInput1" class="form-label">Telephone</label>
+                        </div>
+                        <div class="col-md">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="75.02.36.45" name="telephone" required>
+                            
+                        </div>
+                    </div>
+    
+                    <div class="row mt-2">
+                        <div class="col-md-3">
+                            <label for="exampleFormControlInput1" class="form-label">Email</label>
+                            
+                        </div>
+                        <div class="col-md">
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="exemple@gmail.com" name="email">
+                        </div>
+                    </div>
+    
+                    <div class="row mt-2">
+                        <div class="col-md-3">  
+                            <label for="exampleFormControlInput1" class="form-label">Adresse</label>
+                            
+                        </div>
+                        <div class="col-md">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Moussabougou" name="adresse" required>   
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-3">
+                            <label for="exampleFormControlInput1" class="form-label">Username</label>
+                            
+                        </div>
+                        <div class="col-md">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="maria123" name="username" required>   
+                            
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-3">
+                        <label for="exampleFormControlInput1" class="form-label">Username</label>
+                        </div>
+
+                        <div class="col">
+                            <select name="compte" class="form-control" required>
+                            <option value="Membre">Membre</option>
+                            <option value="Gestionnaire">Gestionnaire</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn text-light"style="background-color:#0d4f9b;" data-bs-dismiss="modal">Non</button>
+                        <button type="submit" name="submit" class="btn btn-danger text-light" >Oui</button>
+                    </div>
+                </div>  
+            </form>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+        <!-- End of Delete -->
 
         <!-- Modal mon solde -->
     <div class="modal fade" id="solde" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -415,10 +513,10 @@
                                         <td><?php echo $row['type_compte'];?></td>
                                         <td><?php echo $row['date_crea'];?></td>
                                         <td>
-                                            <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <a href="" data-bs-toggle="modal" data-bs-target="#moduser"><i class="fa-solid fa-pen-to-square"></i></a>
                                         </td>
                                         <td>
-                                            <a href=""><i class="fa-solid fa-trash"></i></a>
+                                            <a href=""data-bs-toggle="modal" data-bs-target="#deluser"><i class="fa-solid fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     </tbody>

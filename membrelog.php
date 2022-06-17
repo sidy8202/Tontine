@@ -36,7 +36,11 @@ session_start();
       </div>
     </div>
   </div>
-<body style="background-color: #0E4E9A;">
+    
+
+
+    <!-- End -->
+  <body style="background-color: #0E4E9A;">
         <!-- ici se trouve l'entete -->
         <div class="container">
             <div class="row border" style="background-color: #fdaf8e; margin-top: 10px;">
@@ -56,7 +60,7 @@ session_start();
                         <img src="/Tontine/assets/img/aaa.jpg" alt="">
 
                 <div class="col-6" style="margin-top: 30px;">
-                    <p><a style="text-decoration: none; color: #fff;" href="compteM.php"><i class="fa fa-user"></i>&nbsp; Djeneba KOUMARE</a></p>
+                    <p><a style="text-decoration: none; color: #fff;" href="compteM.php"><i class="fa fa-user"></i>&nbsp; <?= @$_SESSION['username']?></a></p>
                 </div>
                 <div class="col" style="margin-top: 30px;">
                     <p><a style="text-decoration: none; color: #fff;" href="login.php"><i class="fa-solid fa-right-from-bracket"></i>&nbsp; Deconnexion</a></p> 

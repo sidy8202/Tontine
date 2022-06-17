@@ -44,7 +44,7 @@ session_start();
                     <img src="assets/img/log.png" style="width: 100px; height: 100px;" alt="">
                 </div>
                 <div class="col" style="margin-top: 30px;">
-                    <p><a style="text-decoration: none; color: #fff;" href="compteM.php"><i class="fa fa-user"></i>&nbsp; @Adja</a></p>
+                    <p><a style="text-decoration: none; color: #fff;" href="compteM.php"><i class="fa fa-user"></i>&nbsp; <?= @$_SESSION['username']?></a></p>
                 </div>
                 <div class="col" style="margin-top: 30px; margin-left: 300px;">
                     <p><a style="text-decoration: none; color: #fff;" href="login.php"><i class="fa-solid fa-right-from-bracket"></i>&nbsp; Deconnexion</a></p> 

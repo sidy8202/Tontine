@@ -240,7 +240,7 @@ include 'prom.php';
                         <div class=" ok decon border">
                             <div class="row">
                                    <div class="col-md-11  deco" >
-                                    <a href="nav-link">
+                                    <a href="deconnection.php">
                                         <p class="fw-bold  text-white text-center">DECONNEXION</p>
                                     </a>
                                    </div>

@@ -11,18 +11,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST") // name of the button given in the form
  
   $sql= "SELECT id_utilisateur, username, passwords,type_compte FROM utilisateur WHERE username='".$user."' AND passwords='".$pass."' ";
   $result= mysqli_query($conn,$sql);
-<<<<<<< HEAD
-  $row=mysqli_fetch_array($result);  
-  
-  $_SESSION["id_utilisateur"] = $userid; 
-  $_SESSION["username"] = $user; 
-=======
   $row=mysqli_fetch_array($result);
 
   $_SESSION['id_utilisateur'] = $row['id_utilisateur'];
+  
   $_SESSION["username"] = $user;  
 
->>>>>>> cf9e425a207fcc5b23d8cc925e7ad28161637862
     if($row["type_compte"]=="Gestionnaire")
         {
           header("LOCATION:gestionnaire.php");
@@ -44,7 +38,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") // name of the button given in the form
 <?php
 if (isset($_POST['email'])) {
   $pass= uniqid();
-  $hashedPassword = password_hash($password, xwPASSWORD_DEFAULT);
+  $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
   $subject = 'Mot de passe oublié';
   $message = "Bonjour, voici votre nouveau mot de passe : $pass";

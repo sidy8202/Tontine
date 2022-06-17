@@ -73,16 +73,9 @@ $bdd = mysqli_select_db($conn,'tontine');
                     
                     <div class="devdiagui">
                         
-<<<<<<< HEAD
-                        <img src="assets/img/mari.png" class="mt-3 bijou mx-5" alt="" srcset="">   
-                             
-                           <span class="fw-bold mx-5"><?= $_SESSION["id_utilisateur"] = $userid; ?></span> 
-
-=======
                         <img src="assets/img/mari.png" class="mt-3 bijou mx-5" alt="" srcset="">
-                           <span><?= $_SESSION['id_utilisateur']?></span>  
+                           <span><?=@$_SESSION['id_utilisateur']?></span>  
                            <span class="fw-bold mx-5"><?= @$_SESSION['username']?></span>          
->>>>>>> cf9e425a207fcc5b23d8cc925e7ad28161637862
                         <p class="mx-5 fw-bold fs-8 ok">Gestionnaire</p>
                         
                         
@@ -163,7 +156,7 @@ $bdd = mysqli_select_db($conn,'tontine');
                                         <a class="nav-link" href="gallerie.php"><i class="fa-solid fa-file-image">&nbsp;&nbsp;&nbsp;</i>Gallerie</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa-solid fa-file-image">&nbsp;&nbsp;&nbsp;</i>Gmail</a>
+                                        <a class="nav-link" href=""><i class="fa-solid fa-file-image">&nbsp;&nbsp;&nbsp;</i>Gmail</a>
                                     </li>
                                     
                                     <hr class="testhr">
@@ -209,12 +202,21 @@ $bdd = mysqli_select_db($conn,'tontine');
                                 </div>
                             </div>
                         </div>
+
+                        <?php
+                            $conn = mysqli_connect("localhost","root", "");
+                            $bdd = mysqli_select_db($conn,'tontine');
+                            $resultat = "SELECT COUNT(*) FROM utilisateur";
+                            $run = mysqli_query($conn, $resultat);
+                           
+                          
+                            ?>
                         
                         <div class="row border mt-3 haoua">
                                 
                             <div class="col-xl col-md col-sm geste" onclick="location.href='';">
-                           
-                               
+                                    
+                               <span><?php echo $run['id_utilisateur'];?></span>
                                 <p class="graphe">Utilisateurs</p>
                             </div>
 
